@@ -104,3 +104,32 @@ body {
     color: #a37e2c; /* Mouse üzerindeyken başlık altın rengine döner */
     transition: 0.3s;
 }
+
+/* --- LOGO VE MARKA ALANI DÜZENLEME --- */
+
+/* Logo Resmini Küçültme */
+.nav-logo, .main-logo, .logo-img { 
+    width: 50px !important;  /* Buradaki rakamı (50) ihtiyacına göre düşürebilirsin */
+    height: auto !important;
+    display: block !important;
+    margin: 0 auto 10px auto !important; /* Üstten 0, yanlardan otomatik, alttan 10px boşluk */
+    object-fit: contain;
+}
+
+/* Logo Altındaki Marka Yazısı (FORTUNE) */
+.brand span, .logo-title, .logo-text {
+    display: block !important;
+    font-size: 20px !important; /* Yazı fontu büyüklüğü */
+    text-align: center !important;
+    letter-spacing: 2px !important;
+    font-weight: 700 !important;
+    color: #ffffff !important;
+    text-transform: uppercase;
+}
+
+/* Logo ve Yazının İçinde Bulunduğu Alan */
+.brand, .logo-section, .side-logo-area {
+    width: 100% !important;
+    padding-bottom: 30px !important; /* Menü elemanlarıyla arasındaki mesafe */
+    text-align: center !important;
+}
