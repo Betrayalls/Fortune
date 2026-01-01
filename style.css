@@ -174,15 +174,17 @@ nav ul li a:hover {
 
 .logo {
     display: flex;
-    align-items: center; /* Logoyu ve yazıyı dikeyde tam ortalar */
-    gap: 15px;           /* Logo resmi ile yazı arasındaki mesafe */
+    align-items: center;
+    color: var(--pure-white);
+    text-decoration: none;
+    font-family: 'Playfair Display', serif;
+    font-weight: bold;
+    font-size: 22px;
 }
 
-.logo-img {
-    height: 45px;        /* Logonun boyutu - Rolex estetiği için çok büyük olmamalı */
-    width: auto;
-    object-fit: contain;
-    transition: transform 0.3s ease;
+.logo img {
+    height: 40px; /* Logo boyutunu buradan yönet */
+    margin-right: 12px;
 }
 
 /* Mouse ile üzerine gelindiğinde logoda hafif bir parlama/büyüme etkisi */
@@ -196,4 +198,5 @@ nav ul li a:hover {
         height: 35px;
     }
 }
+
 
