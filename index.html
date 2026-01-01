@@ -3,65 +3,73 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fortune Ajans | Premium Side Nav</title>
+    <title>Fortune Agency | Premium Tasarım</title>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <aside class="side-navbar">
-        <div class="side-logo-area">
-            <img src="img/logo.png" alt="Logo" class="logo-img">
-            <h2 class="logo-text">FORTUNE</h2>
+    <aside class="side-nav">
+        <div class="brand">
+            <img src="img/logo.png" alt="Logo" class="nav-logo">
+            <span>FORTUNE</span>
         </div>
-        <ul class="nav-links-vertical">
-            <li><a href="#hero">ANA SAYFA</a></li>
-            <li><a href="#hizmetler">HİZMETLER</a></li>
-            <li><a href="#portfolyo">PORTFOLYO</a></li>
-            <li><a href="#iletisim" class="btn-side-contact">İLETİŞİM</a></li>
-        </ul>
+        <nav class="nav-menu">
+            <a href="#hero" class="nav-link active">ANA SAYFA</a>
+            <a href="#hizmetler" class="nav-link">HİZMETLER</a>
+            <a href="#portfolyo" class="nav-link">PORTFOLYO</a>
+            <a href="#iletisim" class="nav-link contact-btn">İLETİŞİM</a>
+        </nav>
     </aside>
 
-    <main class="content-wrapper">
-        <section id="hero" class="hero">
+    <main class="main-wrapper">
+        <section id="hero" class="section hero-area">
             <div class="hero-content">
-                <h1>Firmanızın İmajına <span class="gold-text">Altın</span> Çağını Yaşatıyoruz</h1>
-                <a href="#hizmetler" class="cta-button">Bizimle Tanışın</a>
+                <h1>Firmanızın İmajına <br><span class="gold-text">Altın</span> Çağını Yaşatıyoruz</h1>
+                <p>Modern stratejiler ve lüks tasarımla markanızı zirveye taşıyoruz.</p>
+                <a href="#hizmetler" class="cta-main">Bizimle Tanışın</a>
             </div>
         </section>
 
-        <section id="hizmetler" class="services">
-            <h2>Hizmetlerimiz</h2>
-            <div class="title-line"></div>
-            </section>
-
-        <section id="portfolyo" class="services">
-            <h2>Portfolyo</h2>
-            <div class="title-line"></div>
+        <section id="hizmetler" class="section">
+            <div class="container">
+                <h2 class="section-title">Hizmetlerimiz</h2>
+                <div class="gold-divider"></div>
+                <div class="grid">
+                    <div class="card"><h3>Marka Yönetimi</h3><p>Lider markalar için kurumsal kimlik.</p></div>
+                    <div class="card"><h3>Dijital Pazarlama</h3><p>Veri odaklı büyüme stratejileri.</p></div>
+                    <div class="card"><h3>Web Tasarım</h3><p>Modern ve kullanıcı odaklı arayüzler.</p></div>
+                </div>
+            </div>
         </section>
 
-        <section id="iletisim" class="services">
-            <h2>İletişim</h2>
-            <div class="title-line"></div>
+        <section id="portfolyo" class="section dark-bg">
+            <div class="container">
+                <h2 class="section-title">Portfolyo</h2>
+                <div class="gold-divider"></div>
+                <p>Projelerimiz çok yakında burada.</p>
+            </div>
+        </section>
+
+        <section id="iletisim" class="section">
+            <div class="container">
+                <h2 class="section-title">İletişim</h2>
+                <div class="gold-divider"></div>
+                <p>Bizimle iletişime geçin.</p>
+            </div>
         </section>
     </main>
 
     <script>
-        document.querySelectorAll('.nav-links-vertical a, .cta-button').forEach(anchor => {
+        // Yumuşak Kaydırma (Smooth Scroll) Garantisi
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
-                const targetId = this.getAttribute('href');
-                const targetElement = document.querySelector(targetId);
-                
-                if (targetElement) {
-                    window.scrollTo({
-                        top: targetElement.offsetTop,
-                        behavior: 'smooth' // İşte yavaşça kaydıran sihirli komut
-                    });
-                }
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
             });
         });
     </script>
-
 </body>
 </html>
