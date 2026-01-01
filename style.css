@@ -179,3 +179,11 @@ body {
     margin-bottom: 15px;
     color: #a37e2c;
 }
+
+/* AKTİF MENÜ DÜZENİ */
+.nav-link.active {
+    color: #a37e2c !important; /* Altın sarısı olur */
+    background: rgba(255, 255, 255, 0.1); /* Hafif şeffaf bir arka plan */
+    padding-left: 20px !important; /* Hafif sağa kayar */
+    border-left: 4px solid #a37e2c; /* Soluna ince bir altın çizgi atar */
+}
