@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fortune Agency</title>
+    <title>Fortune Agency | Profesyonel</title>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
@@ -11,7 +11,7 @@
 
     <aside class="side-nav">
         <div class="brand">
-            <img src="img/logof.png" alt="Logo" class="nav-logo">
+            <img src="img/logo.png" alt="Logo" class="nav-logo">
             <span>FORTUNE</span>
         </div>
         <nav class="nav-menu">
@@ -24,59 +24,60 @@
 
     <main class="main-wrapper">
         <section id="hero" class="section hero-area">
-            <div class="hero-content">
-                <h1>Marka İmajınız İçin <br><span class="gold-text">Altın</span> Çağ</h1>
-                <p>Sıradanlığı bırakın, zirveye bizimle adım atın.</p>
-            </div>
+            <h1>Markanız İçin <br><span class="gold-text">Altın</span> Dokunuş</h1>
+            <p>Sıradanlığı bırakın, zirveye bizimle adım atın.</p>
         </section>
 
         <section id="hizmetler" class="section">
-            <div class="container">
-                <h2 class="section-title">Hizmetlerimiz</h2>
-                <div class="gold-divider"></div>
-                <div class="grid">
-                    <div class="card"><h3>Marka Yönetimi</h3><p>Kurumsal kimliğinizi en üst seviyede inşa ediyoruz.</p></div>
-                    <div class="card"><h3>Dijital Pazarlama</h3><p>Hedef kitlenize doğru kanallardan ulaşmanızı sağlıyoruz.</p></div>
-                    <div class="card"><h3>Web Tasarım</h3><p>Modern ve kullanıcı dostu arayüzler tasarlıyoruz.</p></div>
-                </div>
+            <h2 class="section-title">Hizmetlerimiz</h2>
+            <div class="gold-divider"></div>
+            <div class="grid">
+                <div class="card"><h3>Strateji</h3><p>Geleceği planlayan analizler.</p></div>
+                <div class="card"><h3>Tasarım</h3><p>Lüks görsel kimlikler.</p></div>
+                <div class="card"><h3>Yazılım</h3><p>Hızlı dijital yapılar.</p></div>
             </div>
         </section>
 
         <section id="portfolyo" class="section dark-bg">
             <h2 class="section-title">Portfolyo</h2>
             <div class="gold-divider"></div>
-            <p>Çok yakında burada...</p>
         </section>
 
         <section id="iletisim" class="section">
             <h2 class="section-title">İletişim</h2>
             <div class="gold-divider"></div>
-            <p>Bizimle iletişime geçin.</p>
         </section>
     </main>
 
     <script>
-        // Tüm iç bağlantıları (anchor links) seç
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
-                e.preventDefault(); // Tarayıcının küt diye atlamasını engelle
-                
+                e.preventDefault();
                 const targetId = this.getAttribute('href');
                 const targetElement = document.querySelector(targetId);
                 
                 if (targetElement) {
-                    // Sayfayı yumuşak (smooth) bir şekilde kaydır
-                    targetElement.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
+                    const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset;
+                    const startPosition = window.pageYOffset;
+                    const distance = targetPosition - startPosition;
+                    const duration = 1200; // 1.2 saniye sürer (Hızı buradan ayarla)
+                    let start = null;
+
+                    function step(timestamp) {
+                        if (!start) start = timestamp;
+                        const progress = timestamp - start;
+                        // Cubic easing fonksiyonu (Yavaş başlar, hızlanır, yavaş durur)
+                        const ease = progress / duration < 0.5 
+                            ? 4 * Math.pow(progress / duration, 3) 
+                            : 1 - Math.pow(-2 * (progress / duration) + 2, 3) / 2;
+                        
+                        window.scrollTo(0, startPosition + distance * ease);
+                        if (progress < duration) window.requestAnimationFrame(step);
+                    }
+                    window.requestAnimationFrame(step);
                 }
             });
         });
     </script>
 </body>
 </html>
-
-
-
-
