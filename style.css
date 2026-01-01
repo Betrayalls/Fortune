@@ -1,4 +1,3 @@
-/* --- 1. TEMEL AYARLAR --- */
 * {
     margin: 0;
     padding: 0;
@@ -7,7 +6,7 @@
     list-style: none;
 }
 
-/* Çakışmayı önlemek için bunu 'auto' yapıyoruz, yumuşaklığı script halledecek */
+/* ÖNEMLİ: Smooth scroll'u buradan kapattık, script yönetecek */
 html {
     scroll-behavior: auto !important;
 }
@@ -16,61 +15,43 @@ body {
     font-family: 'Poppins', sans-serif;
     display: flex;
     background: #fff;
-    color: #111;
 }
 
-/* --- 2. YAN MENÜ (FIXED) --- */
 .side-nav {
     width: 280px;
     height: 100vh;
-    background: #004d2e; /* Rolex Yeşili */
+    background: #004d2e;
     position: fixed;
     left: 0;
     top: 0;
-    border-right: 4px solid #a37e2c; /* Altın Çizgi */
-    padding: 60px 30px;
+    border-right: 4px solid #a37e2c;
+    padding: 60px 25px;
     z-index: 9999;
 }
 
 .brand {
     color: #fff;
     font-family: 'Playfair Display', serif;
-    font-size: 26px;
+    font-size: 30px; /* Font büyütüldü */
     text-align: center;
     margin-bottom: 50px;
-    letter-spacing: 2px;
 }
-
-.nav-logo { width: 70px; margin-bottom: 10px; display: block; margin-left: auto; margin-right: auto; }
-
-.nav-menu { display: flex; flex-direction: column; gap: 20px; }
 
 .nav-link {
-    color: rgba(255,255,255,0.9);
-    font-size: 18px; /* İSTEDİĞİN GİBİ BÜYÜK FONT */
-    font-weight: 500;
-    padding: 12px;
-    transition: 0.4s ease;
-    border-radius: 8px;
-}
-
-.nav-link:hover {
-    color: #a37e2c;
-    padding-left: 15px; /* Hafif yana kayma efekti */
-    background: rgba(255,255,255,0.05);
-}
-
-.contact-btn {
-    background: #a37e2c;
-    color: white !important;
-    text-align: center;
+    color: #fff;
+    font-size: 20px; /* Font büyütüldü */
+    display: block;
+    padding: 15px 0;
+    transition: 0.3s;
     font-weight: 600;
-    margin-top: 20px;
 }
 
-/* --- 3. ANA İÇERİK ALANI --- */
+.nav-link:hover { color: #a37e2c; padding-left: 10px; }
+
+.contact-btn { background: #a37e2c; text-align: center; border-radius: 8px; margin-top: 20px; }
+
 .main-wrapper {
-    margin-left: 280px; /* Menünün altında kalmaması için */
+    margin-left: 280px;
     width: calc(100% - 280px);
 }
 
@@ -80,69 +61,24 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: center;
+    align-items: center;
+    text-align: center;
 }
 
-/* HERO ALANI */
 .hero-area {
-    background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1920&q=80');
+    background: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)), url('https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1920&q=80');
     background-size: cover;
-    background-position: center;
-    text-align: center;
     color: white;
 }
 
-.hero-content h1 {
-    font-family: 'Playfair Display', serif;
-    font-size: 5rem; /* BÜYÜK BAŞLIK */
-    margin-bottom: 20px;
-}
-
+.hero-area h1 { font-size: 5rem; font-family: 'Playfair Display', serif; margin-bottom: 20px; }
 .gold-text { color: #a37e2c; }
 
-.hero-content p {
-    font-size: 1.6rem;
-    margin-bottom: 30px;
-}
+.section-title { font-size: 50px; font-family: 'Playfair Display', serif; color: #004d2e; }
+.gold-divider { width: 100px; height: 5px; background: #a37e2c; margin: 20px auto 50px; }
 
-.cta-main {
-    padding: 18px 45px;
-    background: #a37e2c;
-    color: white;
-    font-size: 20px;
-    border-radius: 50px;
-    font-weight: 600;
-    transition: 0.4s;
-}
-
-.cta-main:hover { transform: scale(1.05); }
-
-/* BAŞLIKLAR VE KARTLAR */
-.section-title {
-    font-family: 'Playfair Display', serif;
-    font-size: 48px;
-    color: #004d2e;
-    text-align: center;
-}
-
-.gold-divider {
-    width: 80px;
-    height: 4px;
-    background: #a37e2c;
-    margin: 20px auto 50px;
-}
-
-.grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 30px;
-}
-
-.card {
-    padding: 40px;
-    background: #f9f9f9;
-    border-radius: 15px;
-    border-bottom: 6px solid #a37e2c;
-}
+.grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; width: 100%; }
+.card { padding: 40px; background: #f9f9f9; border-radius: 15px; border-bottom: 8px solid #a37e2c; }
 
 .dark-bg { background: #002b1a; color: white; }
 .dark-bg .section-title { color: white; }
