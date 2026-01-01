@@ -183,3 +183,39 @@ nav {
     margin-bottom: 15px;
     color: var(--rolex-green);
 }
+
+/* Navigasyondaki İletişim Butonu */
+.btn-nav {
+    background: var(--rolex-gold);
+    padding: 10px 25px;
+    border-radius: 50px; /* Tam yuvarlak (Oval) bir görünüm sağlar */
+    color: var(--pure-white);
+    font-weight: 600;
+    transition: 0.3s all ease;
+}
+
+.btn-nav:hover {
+    background-color: var(--pure-white);
+    color: var(--rolex-green);
+    transform: translateY(-2px);
+}
+
+/* Hero Bölümündeki "Bizimle Tanışın" Butonu */
+.cta-button {
+    display: inline-block;
+    padding: 18px 45px;
+    background-color: var(--rolex-gold);
+    color: var(--pure-white);
+    font-weight: 600;
+    border: 2px solid var(--rolex-gold);
+    border-radius: 8px; /* Modern ve şık bir yumuşatma */
+    transition: 0.4s all ease;
+    cursor: pointer;
+}
+
+.cta-button:hover {
+    background: transparent;
+    color: var(--rolex-gold);
+    border-radius: 12px; /* Hover durumunda biraz daha yumuşayan bir efekt */
+    transform: scale(1.05);
+}
