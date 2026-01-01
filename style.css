@@ -1,77 +1,93 @@
-/* 1. AKICILIK AYARLARI */
-html {
-    scroll-behavior: smooth !important;
-}
-
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    text-decoration: none;
-    list-style: none !important;
-}
+/* TEMEL AYARLAR */
+html { scroll-behavior: smooth; }
+* { margin: 0; padding: 0; box-sizing: border-box; text-decoration: none; list-style: none; }
 
 body {
     font-family: 'Poppins', sans-serif;
+    background: #fff;
     display: flex;
-    overflow-x: hidden;
+    color: #333;
 }
 
-/* 2. SOL MENÜ (SABİT) */
-.side-navbar {
-    width: 280px;
+/* YAN MENÜ - DARALTILMIŞ VE ŞIK */
+.side-nav {
+    width: 240px;
     height: 100vh;
-    background: linear-gradient(180deg, #004d2e 0%, #006039 100%);
+    background: #004d2e; /* Rolex Yeşili */
     position: fixed;
     left: 0;
     top: 0;
-    border-right: 3px solid #a37e2c;
+    display: flex;
+    flex-direction: column;
     padding: 40px 20px;
+    border-right: 2px solid #a37e2c;
     z-index: 1000;
 }
 
-.nav-links-vertical li a {
-    color: white;
-    display: block;
-    padding: 15px;
+.brand {
+    text-align: center;
+    margin-bottom: 60px;
+    color: #fff;
+    font-family: 'Playfair Display', serif;
+    font-size: 20px;
+    letter-spacing: 2px;
+}
+
+.nav-logo { width: 50px; margin-bottom: 10px; display: block; margin-left: auto; margin-right: auto; }
+
+.nav-menu { display: flex; flex-direction: column; gap: 15px; }
+
+.nav-link {
+    color: rgba(255,255,255,0.7);
+    font-size: 13px;
+    font-weight: 500;
+    padding: 12px;
     transition: 0.3s;
-    font-size: 14px;
+    border-radius: 5px;
 }
 
-.nav-links-vertical li a:hover {
-    padding-left: 25px;
-    color: #a37e2c;
+.nav-link:hover { color: #a37e2c; background: rgba(255,255,255,0.05); padding-left: 20px; }
+
+.contact-btn {
+    background: #a37e2c;
+    color: white !important;
+    text-align: center;
+    margin-top: 20px;
+    font-weight: 600;
 }
 
-/* 3. İÇERİK ALANI */
-.content-wrapper {
-    margin-left: 280px;
-    width: calc(100% - 280px);
+/* ANA İÇERİK - MENÜDEN KURTARILMIŞ */
+.main-wrapper {
+    margin-left: 240px;
+    width: calc(100% - 240px);
 }
 
-/* Her bölümün tam ekran boyu olması kaymayı güzelleştirir */
-section {
-    min-height: 100vh; 
-    padding: 100px 50px;
+.section {
+    min-height: 100vh;
+    padding: 100px 10%;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center;
-    border-bottom: 1px solid #eee;
 }
 
-.hero {
-    background: #0b0b0b;
-    color: white;
+/* HERO ALANI */
+.hero-area {
+    background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1920&q=80');
+    background-size: cover;
+    background-position: center;
     text-align: center;
-}
-
-.gold-text { color: #a37e2c; }
-
-.cta-button {
-    margin-top: 20px;
-    padding: 15px 30px;
-    background: #a37e2c;
     color: white;
-    border-radius: 10px;
 }
+
+.hero-content h1 { font-family: 'Playfair Display', serif; font-size: 3.5rem; margin-bottom: 20px; }
+.gold-text { color: #a37e2c; }
+.cta-main { padding: 15px 40px; background: #a37e2c; color: white; border-radius: 30px; display: inline-block; margin-top: 30px; transition: 0.3s; }
+.cta-main:hover { transform: scale(1.05); box-shadow: 0 10px 20px rgba(163,126,44,0.3); }
+
+/* DİĞER BÖLÜMLER */
+.section-title { font-family: 'Playfair Display', serif; font-size: 32px; color: #004d2e; text-align: center; }
+.gold-divider { width: 50px; height: 3px; background: #a37e2c; margin: 15px auto 40px; }
+.grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; }
+.card { padding: 30px; background: #f9f9f9; border-radius: 10px; border-bottom: 4px solid #a37e2c; }
+.dark-bg { background: #002b1a; color: white; }
+.dark-bg .section-title { color: white; }
