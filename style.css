@@ -27,42 +27,35 @@ body {
     line-height: 1.7;
 }
 
-/* Navigasyon - Premium Bar */
+/* Navigasyon Çubuğu Konteyneri */
 nav {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 25px 8%;
+    padding: 15px 8%; /* İç boşlukları biraz daralttık daha kibar durması için */
     background-color: var(--rolex-green);
-    border-bottom: 3px solid var(--rolex-gold);
+    border-bottom: 2px solid var(--rolex-gold);
     position: sticky;
     top: 0;
     z-index: 1000;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
 }
 
-.logo {
-    font-family: 'Playfair Display', serif;
-    font-size: 26px;
-    font-weight: 700;
-    letter-spacing: 1px;
-    color: var(--pure-white);
-}
-
-.logo span {
-    color: var(--rolex-gold);
-}
-
+/* Menü Listesi Ayarları */
 nav ul {
     display: flex;
-    list-style: none;
+    list-style: none; /* BU SATIR NOKTALARI SİLER */
+    margin: 0;
+    padding: 0;
     align-items: center;
 }
 
+/* Her bir menü elemanı arasındaki boşluk */
 nav ul li {
-    margin-left: 35px;
+    margin-left: 30px;
+    list-style-type: none; /* Garanti olması için tekrar ekliyoruz */
 }
 
+/* Linklerin Görünümü */
 nav ul li a {
     color: var(--pure-white);
     text-decoration: none;
@@ -70,7 +63,7 @@ nav ul li a {
     font-weight: 500;
     text-transform: uppercase;
     letter-spacing: 1px;
-    transition: 0.4s ease;
+    transition: 0.3s;
 }
 
 nav ul li a:hover {
@@ -203,3 +196,4 @@ nav ul li a:hover {
         height: 35px;
     }
 }
+
