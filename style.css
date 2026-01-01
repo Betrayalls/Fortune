@@ -1,3 +1,15 @@
+/* CSS DOSYANIN EN BAŞINA KOY */
+html {
+    scroll-behavior: smooth !important;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    list-style: none !important;
+}
+
 /* FORTUNE AGENCY - ROLEX SIDE NAV THEME 
    Renkler: #004d2e (Koyu Yeşil), #006039 (Rolex Yeşil), #a37e2c (Rolex Altın)
 */
@@ -228,3 +240,4 @@ body {
         flex-direction: column;
     }
 }
+
