@@ -82,3 +82,25 @@ body {
 
 .dark-bg { background: #002b1a; color: white; }
 .dark-bg .section-title { color: white; }
+
+/* HİZMET KUTUCUKLARI ETKİLEŞİMİ */
+.card {
+    transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1); /* Çok yumuşak bir tepki verir */
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Mouse üzerine geldiğinde (Hover durumu) */
+.card:hover {
+    transform: translateY(-10px) scale(1.03); /* Yukarı doğru 10px kayar ve hafif büyür */
+    box-shadow: 0 20px 40px rgba(0, 77, 46, 0.15); /* Rolex yeşili tonunda yumuşak gölge */
+    background: #ffffff;
+    border-bottom-width: 10px; /* Altın şerit kalınlaşarak vurgu yapar */
+}
+
+/* Kartın içindeki başlığın rengini değiştirme (opsiyonel) */
+.card:hover h3 {
+    color: #a37e2c; /* Mouse üzerindeyken başlık altın rengine döner */
+    transition: 0.3s;
+}
