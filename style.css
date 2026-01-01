@@ -22,23 +22,34 @@ body {
     overflow-x: hidden;
 }
 
-/* Navigasyon Düzenleme */
+/* Geçişli (Gradient) Navigasyon Çubuğu */
 nav {
-    background-color: var(--rolex-green);
-    border-bottom: 3px solid var(--rolex-gold);
-    padding: 15px 0;
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-    box-shadow: 0 5px 20px rgba(0,0,0,0.3);
-}
-
-.nav-container {
-    width: 85%;
-    margin: 0 auto;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    padding: 15px 8%;
+    
+    /* Rolex Yeşili Geçiş Efekti (Soldan Sağa) */
+    background: linear-gradient(90deg, #004d2e 0%, #006039 50%, #004d2e 100%);
+    
+    border-bottom: 3px solid var(--rolex-gold);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+}
+
+/* Menüdeki noktaların tamamen silindiğinden emin olalım */
+nav ul {
+    display: flex;
+    list-style: none !important; /* Noktaları kesin olarak kaldırır */
+    margin: 0;
+    padding: 0;
+}
+
+nav ul li {
+    list-style-type: none !important;
+    margin-left: 30px;
 }
 
 .logo {
@@ -219,3 +230,4 @@ nav {
     border-radius: 12px; /* Hover durumunda biraz daha yumuşayan bir efekt */
     transform: scale(1.05);
 }
+
