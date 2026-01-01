@@ -3,73 +3,64 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fortune Agency | Premium</title>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+    <title>Premium Ajans | Altın Standartlar</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/png" href="img/logof.png">
 </head>
 <body>
 
-    <aside class="side-nav">
-        <div class="brand">
-            <img src="img/logof.png" alt="Logo" class="nav-logo">
-            <span>FORTUNE</span>
+    <nav>
+        <div class="nav-container">
+            <div class="logo">
+                <img src="img/logof.png" alt="Logo" class="logo-img">
+                FORTUNE<span></span>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#">Ana Sayfa</a></li>
+                <li><a href="#">Hizmetler</a></li>
+                <li><a href="#">Portfolyo</a></li>
+                <li><a href="#" class="btn-nav">İletişim</a></li>
+            </ul>
         </div>
-        <nav class="nav-menu">
-            <a href="#hero" class="nav-link">ANA SAYFA</a>
-            <a href="#hizmetler" class="nav-link">HİZMETLER</a>
-            <a href="#portfolyo" class="nav-link">PORTFOLYO</a>
-            <a href="#iletisim" class="nav-link contact-btn">İLETİŞİM</a>
-        </nav>
-    </aside>
+    </nav>
 
-    <main class="main-wrapper">
-        <section id="hero" class="section hero-area">
+    <header class="hero">
+        <div class="hero-overlay">
             <div class="hero-content">
-                <h1>Markanız İçin <br><span class="gold-text">Altın</span> Dokunuş</h1>
-                <p>Sıradanlığı bırakın, zirveye bizimle adım atın.</p>
-                <a href="#hizmetler" class="cta-main">Keşfetmeye Başla</a>
+                <h1>Firmanızın İmajına <span class="gold-text">Altın</span> Çağını Yaşatıyoruz</h1>
+                <p>Strateji, tasarım ve teknolojiyi birleştirerek markanızı zirveye taşıyoruz.</p>
+                <a href="#" class="cta-button">Bizimle Tanışın</a>
             </div>
-        </section>
+        </div>
+    </header>
 
-        <section id="hizmetler" class="section">
-            <h2 class="section-title">Hizmetlerimiz</h2>
-            <div class="gold-divider"></div>
-            <div class="grid">
-                <div class="card"><h3>Strateji</h3><p>Geleceği planlayan modern analizler.</p></div>
-                <div class="card"><h3>Tasarım</h3><p>Lüks ve estetik görsel kimlikler.</p></div>
-                <div class="card"><h3>Yazılım</h3><p>Yüksek performanslı dijital yapılar.</p></div>
+    <section class="services">
+        <div class="section-title">
+            <h2>Uzmanlık Alanlarımız</h2>
+            <div class="title-line"></div>
+        </div>
+        <div class="service-grid">
+            <div class="service-card">
+                <h3>Marka Yönetimi</h3>
+                <p>Kurumsal kimliğinizi en üst seviyede inşa ederek pazar liderliğinizi pekiştiriyoruz.</p>
             </div>
-        </section>
+            <div class="service-card">
+                <h3>Dijital Pazarlama</h3>
+                <p>Veri odaklı stratejilerle hedef kitlenize en doğru kanallardan ulaşıyoruz.</p>
+            </div>
+            <div class="service-card">
+                <h3>Web Tasarım</h3>
+                <p>Modern, hızlı ve kullanıcı deneyimi odaklı dijital dünyalar tasarlıyoruz.</p>
+            </div>
+        </div>
+    </section>
 
-        <section id="portfolyo" class="section dark-bg">
-            <h2 class="section-title">Portfolyo</h2>
-            <div class="gold-divider"></div>
-        </section>
-
-        <section id="iletisim" class="section">
-            <h2 class="section-title">İletişim</h2>
-            <div class="gold-divider"></div>
-        </section>
-    </main>
-
-    <script>
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault(); // Tarayıcının 'ışınlanma' özelliğini durdurur
-                
-                const targetId = this.getAttribute('href');
-                const targetElement = document.querySelector(targetId);
-                
-                if (targetElement) {
-                    // Sayfayı milimetrik ve akışkan şekilde hedefe götürür
-                    window.scrollTo({
-                        top: targetElement.offsetTop,
-                        behavior: 'smooth'
-                    });
-                }
-            });
-        });
-    </script>
 </body>
 </html>
+
+
+
+
+
 
