@@ -241,3 +241,18 @@ body {
     }
 }
 
+/* CSS DOSYANIN EN ALTINA KOY */
+
+/* Bölümlere gelindiğinde hafif bir netleşme efekti */
+section {
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 1.2s ease forwards;
+}
+
+@keyframes fadeInUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
