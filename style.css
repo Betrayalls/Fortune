@@ -1,144 +1,142 @@
-/* --- TEMEL AYARLAR --- */
-html { 
-    scroll-behavior: smooth; /* Modern tarayıcılar için temel akış */
+/* GENEL RESET */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    list-style: none;
 }
 
-* { 
-    margin: 0; 
-    padding: 0; 
-    box-sizing: border-box; 
-    text-decoration: none; 
-    list-style: none; 
+html {
+    scroll-behavior: smooth !important; /* Tarayıcı desteği için */
 }
 
 body {
     font-family: 'Poppins', sans-serif;
-    background: #fff;
     display: flex;
-    color: #111;
+    background: #fff;
+    overflow-x: hidden;
 }
 
-/* --- YAN MENÜ TASARIMI --- */
+/* YAN MENÜ */
 .side-nav {
-    width: 260px; /* Genişlik ideal seviyeye çekildi */
+    width: 280px;
     height: 100vh;
     background: #004d2e; /* Rolex Yeşili */
     position: fixed;
     left: 0;
     top: 0;
-    display: flex;
-    flex-direction: column;
-    padding: 50px 25px;
-    border-right: 3px solid #a37e2c; /* Rolex Altın Şeridi */
-    z-index: 1000;
+    border-right: 4px solid #a37e2c;
+    padding: 60px 30px;
+    z-index: 9999;
 }
 
 .brand {
-    text-align: center;
-    margin-bottom: 50px;
     color: #fff;
     font-family: 'Playfair Display', serif;
-    font-size: 24px; /* Logo metni büyütüldü */
-    letter-spacing: 3px;
+    font-size: 26px; /* BÜYÜTÜLDÜ */
+    text-align: center;
+    margin-bottom: 50px;
+    letter-spacing: 2px;
 }
 
-.nav-logo { width: 60px; margin-bottom: 15px; display: block; margin-left: auto; margin-right: auto; }
+.nav-logo { width: 70px; margin-bottom: 10px; display: block; margin-left: auto; margin-right: auto; }
 
-.nav-menu { display: flex; flex-direction: column; gap: 20px; }
+.nav-menu { display: flex; flex-direction: column; gap: 25px; }
 
 .nav-link {
-    color: rgba(255,255,255,0.85);
-    font-size: 16px; /* İSTEDİĞİN GİBİ FONT BÜYÜTÜLDÜ */
+    color: rgba(255,255,255,0.9);
+    font-size: 18px; /* BÜYÜTÜLDÜ */
     font-weight: 500;
-    padding: 12px 15px;
-    transition: 0.4s all ease;
-    border-radius: 8px;
-    letter-spacing: 1px;
+    transition: 0.4s;
+    padding: 10px;
 }
 
-.nav-link:hover { 
-    color: #a37e2c; 
-    background: rgba(255,255,255,0.08); 
-    padding-left: 25px; /* Soft yana kayma efekti */
+.nav-link:hover {
+    color: #a37e2c;
+    padding-left: 15px;
 }
 
 .contact-btn {
     background: #a37e2c;
     color: white !important;
     text-align: center;
-    margin-top: 25px;
+    border-radius: 5px;
     font-weight: 600;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
 }
 
-/* --- İÇERIK ALANI --- */
+/* ANA İÇERİK */
 .main-wrapper {
-    margin-left: 260px;
-    width: calc(100% - 260px);
+    margin-left: 280px;
+    width: calc(100% - 280px);
 }
 
 .section {
     min-height: 100vh;
-    padding: 100px 8%;
+    padding: 100px 10%;
     display: flex;
     flex-direction: column;
     justify-content: center;
 }
 
-/* --- HERO (GİRİŞ) ALANI --- */
 .hero-area {
     background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1920&q=80');
     background-size: cover;
-    background-position: center;
     text-align: center;
     color: white;
 }
 
-.hero-content h1 { 
-    font-family: 'Playfair Display', serif; 
-    font-size: 4.5rem; /* Başlık fontu büyütüldü */
-    margin-bottom: 25px; 
-    line-height: 1.1;
+.hero-content h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 5rem; /* ÇOK DAHA BÜYÜK */
+    margin-bottom: 20px;
 }
 
 .gold-text { color: #a37e2c; }
 
 .hero-content p {
-    font-size: 1.4rem; /* Alt metin büyütüldü */
-    margin-bottom: 35px;
-    opacity: 0.9;
+    font-size: 1.6rem; /* BÜYÜTÜLDÜ */
+    margin-bottom: 30px;
 }
 
-.cta-main { 
-    padding: 18px 45px; 
-    background: #a37e2c; 
-    color: white; 
-    border-radius: 50px; 
-    display: inline-block; 
+.cta-main {
+    padding: 20px 50px;
+    background: #a37e2c;
+    color: white;
+    font-size: 20px;
+    border-radius: 50px;
     font-weight: 600;
-    font-size: 18px;
-    transition: 0.4s; 
 }
 
-.cta-main:hover { transform: scale(1.05); box-shadow: 0 10px 25px rgba(163,126,44,0.4); }
-
-/* --- BÖLÜM STİLLERİ --- */
-.section-title { font-family: 'Playfair Display', serif; font-size: 42px; color: #004d2e; text-align: center; }
-.gold-divider { width: 70px; height: 4px; background: #a37e2c; margin: 20px auto 50px; }
-
-.grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
-.card { 
-    padding: 45px; 
-    background: #fdfdfd; 
-    border-radius: 15px; 
-    border-bottom: 5px solid #a37e2c; 
-    box-shadow: 0 15px 35px rgba(0,0,0,0.05);
-    transition: 0.3s;
+.section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 48px; /* BÜYÜTÜLDÜ */
+    color: #004d2e;
+    text-align: center;
 }
 
-.card:hover { transform: translateY(-10px); }
-.card h3 { font-size: 22px; margin-bottom: 15px; color: #004d2e; }
-.card p { font-size: 16px; color: #666; line-height: 1.6; }
+.gold-divider {
+    width: 80px;
+    height: 4px;
+    background: #a37e2c;
+    margin: 20px auto 50px;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+}
+
+.card {
+    padding: 40px;
+    background: #f9f9f9;
+    border-radius: 15px;
+    border-bottom: 6px solid #a37e2c;
+}
+
+.card h3 { font-size: 24px; margin-bottom: 15px; }
+.card p { font-size: 18px; color: #555; line-height: 1.6; }
 
 .dark-bg { background: #002b1a; color: white; }
 .dark-bg .section-title { color: white; }
