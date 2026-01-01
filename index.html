@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fortune Agency | Premium Tasarım</title>
+    <title>Fortune</title>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
@@ -11,11 +11,11 @@
 
     <aside class="side-nav">
         <div class="brand">
-            <img src="img/logo.png" alt="Logo" class="nav-logo">
+            <img src="img/logof.png" alt="Logo" class="nav-logo">
             <span>FORTUNE</span>
         </div>
         <nav class="nav-menu">
-            <a href="#hero" class="nav-link active">ANA SAYFA</a>
+            <a href="#hero" class="nav-link">ANA SAYFA</a>
             <a href="#hizmetler" class="nav-link">HİZMETLER</a>
             <a href="#portfolyo" class="nav-link">PORTFOLYO</a>
             <a href="#iletisim" class="nav-link contact-btn">İLETİŞİM</a>
@@ -36,9 +36,9 @@
                 <h2 class="section-title">Hizmetlerimiz</h2>
                 <div class="gold-divider"></div>
                 <div class="grid">
-                    <div class="card"><h3>Marka Yönetimi</h3><p>Lider markalar için kurumsal kimlik.</p></div>
-                    <div class="card"><h3>Dijital Pazarlama</h3><p>Veri odaklı büyüme stratejileri.</p></div>
-                    <div class="card"><h3>Web Tasarım</h3><p>Modern ve kullanıcı odaklı arayüzler.</p></div>
+                    <div class="card"><h3>Marka Yönetimi</h3><p>Lider markalar için kurumsal kimlik inşa ediyoruz.</p></div>
+                    <div class="card"><h3>Dijital Pazarlama</h3><p>Veri odaklı büyüme ve reklam stratejileri.</p></div>
+                    <div class="card"><h3>Web Tasarım</h3><p>Modern, hızlı ve kullanıcı odaklı dijital deneyimler.</p></div>
                 </div>
             </div>
         </section>
@@ -47,7 +47,7 @@
             <div class="container">
                 <h2 class="section-title">Portfolyo</h2>
                 <div class="gold-divider"></div>
-                <p>Projelerimiz çok yakında burada.</p>
+                <p>Projelerimiz ve başarı hikayelerimiz çok yakında burada.</p>
             </div>
         </section>
 
@@ -55,19 +55,24 @@
             <div class="container">
                 <h2 class="section-title">İletişim</h2>
                 <div class="gold-divider"></div>
-                <p>Bizimle iletişime geçin.</p>
+                <p>Profesyonel çözümler için bizimle hemen iletişime geçin.</p>
             </div>
         </section>
     </main>
 
     <script>
-        // Yumuşak Kaydırma (Smooth Scroll) Garantisi
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
+        document.querySelectorAll('.nav-link, .cta-main').forEach(link => {
+            link.addEventListener('click', function(e) {
                 e.preventDefault();
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
-                    behavior: 'smooth'
-                });
+                const targetId = this.getAttribute('href');
+                const targetSection = document.querySelector(targetId);
+
+                if (targetSection) {
+                    window.scrollTo({
+                        top: targetSection.offsetTop,
+                        behavior: 'smooth' // Tarayıcı düzeyinde soft geçiş
+                    });
+                }
             });
         });
     </script>
