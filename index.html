@@ -6,7 +6,6 @@
     <title>Fortune Ajans | Premium Side Nav</title>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
-    <link rel="icon" type="image/png" href="img/logof.png">
 </head>
 <body>
 
@@ -15,7 +14,6 @@
             <img src="img/logo.png" alt="Logo" class="logo-img">
             <h2 class="logo-text">FORTUNE</h2>
         </div>
-
         <ul class="nav-links-vertical">
             <li><a href="#hero">ANA SAYFA</a></li>
             <li><a href="#hizmetler">HİZMETLER</a></li>
@@ -25,55 +23,45 @@
     </aside>
 
     <main class="content-wrapper">
-
         <section id="hero" class="hero">
-            <div class="hero-overlay">
-                <div class="hero-content">
-                    <h1>Firmanızın İmajına <span class="gold-text">Altın</span> Çağını Yaşatıyoruz</h1>
-                    <p>Strateji, tasarım ve teknolojiyi birleştirerek markanızı zirveye taşıyoruz.</p>
-                    <a href="#hizmetler" class="cta-button">Bizimle Tanışın</a>
-                </div>
+            <div class="hero-content">
+                <h1>Firmanızın İmajına <span class="gold-text">Altın</span> Çağını Yaşatıyoruz</h1>
+                <a href="#hizmetler" class="cta-button">Bizimle Tanışın</a>
             </div>
         </section>
 
         <section id="hizmetler" class="services">
-            <div class="section-title">
-                <h2>Uzmanlık Alanlarımız</h2>
-                <div class="title-line"></div>
-            </div>
-            <div class="service-grid">
-                <div class="service-card">
-                    <h3>Marka Yönetimi</h3>
-                    <p>Kurumsal kimliğinizi en üst seviyede inşa ederek pazar liderliğinizi pekiştiriyoruz.</p>
-                </div>
-                <div class="service-card">
-                    <h3>Dijital Pazarlama</h3>
-                    <p>Veri odaklı stratejilerle hedef kitlenize en doğru kanallardan ulaşıyoruz.</p>
-                </div>
-                <div class="service-card">
-                    <h3>Web Tasarım</h3>
-                    <p>Modern, hızlı ve kullanıcı deneyimi odaklı dijital dünyalar tasarlıyoruz.</p>
-                </div>
-            </div>
-        </section>
+            <h2>Hizmetlerimiz</h2>
+            <div class="title-line"></div>
+            </section>
 
-        <section id="portfolyo" class="services" style="background-color: #ffffff;">
-            <div class="section-title">
-                <h2>Portfolyo</h2>
-                <div class="title-line"></div>
-                <p>Yakında burada en iyi işlerimizi göreceksiniz.</p>
-            </div>
+        <section id="portfolyo" class="services">
+            <h2>Portfolyo</h2>
+            <div class="title-line"></div>
         </section>
 
         <section id="iletisim" class="services">
-            <div class="section-title">
-                <h2>İletişim</h2>
-                <div class="title-line"></div>
-                <p>Bizimle altın bir geleceğe adım atın.</p>
-            </div>
+            <h2>İletişim</h2>
+            <div class="title-line"></div>
         </section>
-
     </main>
+
+    <script>
+        document.querySelectorAll('.nav-links-vertical a, .cta-button').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop,
+                        behavior: 'smooth' // İşte yavaşça kaydıran sihirli komut
+                    });
+                }
+            });
+        });
+    </script>
 
 </body>
 </html>
