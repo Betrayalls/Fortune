@@ -187,3 +187,59 @@ body {
     padding-left: 20px !important; /* Hafif sağa kayar */
     border-left: 4px solid #a37e2c; /* Soluna ince bir altın çizgi atar */
 }
+
+/* --- MÜŞTERİ YORUMLARI TASARIMI --- */
+.testimonial-grid {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
+    margin-top: 50px;
+}
+
+.testimonial-card {
+    background: rgba(255, 255, 255, 0.05); /* Çok hafif şeffaf arka plan */
+    padding: 40px;
+    border-radius: 20px;
+    flex: 1;
+    min-width: 300px;
+    max-width: 400px;
+    border: 1px solid rgba(163, 126, 44, 0.2); /* İnce altın çerçeve */
+    transition: 0.4s;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.testimonial-card:hover {
+    background: rgba(255, 255, 255, 0.1);
+    transform: translateY(-5px);
+    border-color: #a37e2c;
+}
+
+.stars {
+    color: #a37e2c;
+    font-size: 20px;
+    margin-bottom: 20px;
+}
+
+.testimonial-card p {
+    font-style: italic;
+    font-size: 1.1rem;
+    line-height: 1.6;
+    margin-bottom: 30px;
+    color: #ddd;
+}
+
+.client-info strong {
+    display: block;
+    font-size: 18px;
+    color: #fff;
+}
+
+.client-info span {
+    font-size: 14px;
+    color: #a37e2c;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
