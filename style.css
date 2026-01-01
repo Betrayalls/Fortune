@@ -134,48 +134,48 @@ body {
     text-align: center !important;
 }
 
-/* --- İLETİŞİM ALANI TASARIMI --- */
+/* --- İLETİŞİM ALANI YAN YANA DİZME (FIX) --- */
+
+#iletisim .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Başlık ve çizgiyi ortalar */
+}
+
 .contact-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 30px;
-    margin-top: 50px;
+    display: flex; /* Kutuları yan yana getirir */
+    justify-content: center; /* Kutuları ortada toplar */
+    gap: 30px; /* Kutular arasındaki boşluk */
     width: 100%;
+    margin-top: 40px;
+    flex-wrap: wrap; /* Ekran küçülünce alt alta geçer (mobilde bozulmaz) */
 }
 
 .contact-item {
+    flex: 1; /* Kutuların eşit genişlikte olmasını sağlar */
+    min-width: 280px; /* Kutular çok fazla daralmasın */
+    max-width: 350px; /* Kutular çok fazla yayılmasın */
     background: #fdfdfd;
     padding: 40px 20px;
     border-radius: 15px;
     text-align: center;
     transition: all 0.4s ease;
     border: 1px solid rgba(0, 77, 46, 0.1);
-    display: block;
     color: #111;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Hover Efekti */
+.contact-item:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 35px rgba(163, 126, 44, 0.2);
+    border-color: #a37e2c;
 }
 
 .icon-box {
-    font-size: 40px;
-    margin-bottom: 20px;
-    color: #a37e2c; /* Altın rengi ikonlar */
-}
-
-.contact-item h3 {
-    font-family: 'Playfair Display', serif;
-    font-size: 24px;
-    margin-bottom: 10px;
-    color: #004d2e;
-}
-
-.contact-item p {
-    font-size: 16px;
-    color: #666;
-}
-
-/* Hover Efekti: Üzerine gelince parlasın */
-.contact-item:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 15px 35px rgba(163, 126, 44, 0.15);
-    background: #fff;
-    border-color: #a37e2c;
+    font-size: 45px;
+    margin-bottom: 15px;
+    color: #a37e2c;
 }
