@@ -263,36 +263,49 @@ body {
 }
 
 /* ============================================================
-   2. MOBİL (TELEFON) İÇİN ÖZEL DÜZELTMELER
+   1. MASAÜSTÜ (PC) İÇİN GÜNCEL VE RENKLİ DÜZENLEME
    ============================================================ */
-@media (max-width: 992px) {
-    /* Müşteri Yorumları Kartları (Mobil) */
+@media (min-width: 993px) {
+    /* Yazıların karışmasını engellemek için grid yapısını ferahlatıyoruz */
+    .testimonial-grid {
+        display: grid !important;
+        grid-template-columns: repeat(3, 1fr) !important; /* Kartları 3 sütuna zorlar */
+        gap: 40px !important;
+        padding: 20px 0;
+    }
+
     .testimonial-card {
-        background: #ffffff !important; /* Mobilde beyaz kart */
-        color: #111111 !important; /* Mobilde siyah yazı */
-        box-shadow: 0 10px 20px rgba(0,0,0,0.2) !important;
+        background: rgba(255, 255, 255, 0.03) !important; 
+        border: 1px solid rgba(163, 126, 44, 0.2) !important;
+        padding: 40px 30px !important;
+        min-height: 350px !important; /* Kartların boyunu sabitliyoruz */
     }
 
-    .testimonial-card p, 
-    .testimonial-card .client-info strong {
-        color: #111111 !important; /* Okunabilirlik için siyah */
-    }
-
+    /* YILDIZLAR: Altın Sarısı */
     .testimonial-card .stars {
         color: #a37e2c !important;
+        font-size: 22px !important;
+        margin-bottom: 20px !important;
     }
 
-    /* Sabit İletişim Barı (Mobil) */
-    .fixed-contact-bar {
-        width: 90% !important;
-        gap: 15px !important;
+    /* Müşteri Yorum Metni */
+    .testimonial-card p {
+        color: #ffffff !important;
+        line-height: 1.8 !important; /* Yazıların birbirine girmesini engeller */
+        font-size: 1.05rem !important;
     }
 
-    .bar-item {
-        flex-direction: column !important; /* Mobilde ikon üstte yazı altta */
+    /* İSİM VE SOYİSİM: Altın Sarısı */
+    .testimonial-card .client-info strong {
+        color: #a37e2c !important; /* İstediğin sarı renk */
+        font-size: 19px !important;
+        display: block;
+        margin-top: 15px;
     }
 
-    .bar-text {
-        font-size: 10px !important;
+    /* Alt Başlık (Ünvan) */
+    .testimonial-card .client-info span {
+        color: #cccccc !important;
+        font-size: 13px !important;
     }
 }
