@@ -392,3 +392,55 @@ body {
         max-width: 100% !important;
     }
 }
+
+/* --- SABİT İLETİŞİM BARI CSS --- */
+.fixed-contact-bar {
+    position: fixed;
+    bottom: 20px; /* Ekranın altından mesafe */
+    left: 50%;
+    transform: translateX(-50%); /* Tam ortaya hizalar */
+    display: flex;
+    gap: 15px;
+    background: rgba(0, 77, 46, 0.85); /* Rolex yeşili, hafif şeffaf */
+    padding: 12px 25px;
+    border-radius: 50px; /* Oval görünüm */
+    border: 1px solid #a37e2c; /* Altın çerçeve */
+    backdrop-filter: blur(10px); /* Arka planı bulanıklaştırır (Lüks efekt) */
+    z-index: 9999; /* Her şeyin üstünde durması için */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.bar-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    text-decoration: none;
+    color: white;
+    font-size: 14px;
+    font-weight: 600;
+    transition: 0.3s;
+}
+
+.bar-item:hover {
+    color: #a37e2c;
+    transform: translateY(-2px);
+}
+
+.bar-icon {
+    font-size: 18px;
+}
+
+/* Mobilde yazıları gizleyip sadece ikonları gösterebiliriz (daha temiz durur) */
+@media (max-width: 600px) {
+    .bar-text {
+        display: none;
+    }
+    .fixed-contact-bar {
+        padding: 10px 20px;
+        bottom: 10px;
+        gap: 25px;
+    }
+    .bar-icon {
+        font-size: 22px;
+    }
+}
