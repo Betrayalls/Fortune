@@ -1,3 +1,4 @@
+/* 1. GENEL AYARLAR */
 * {
     margin: 0;
     padding: 0;
@@ -6,17 +7,21 @@
     list-style: none;
 }
 
-/* ÖNEMLİ: Smooth scroll'u buradan kapattık, script yönetecek */
 html {
     scroll-behavior: auto !important;
+    overflow-x: hidden; /* Yatay kaymayı engeller */
 }
 
 body {
     font-family: 'Poppins', sans-serif;
     display: flex;
+    flex-direction: row;
     background: #fff;
+    min-height: 100vh;
+    overflow-x: hidden;
 }
 
+/* 2. MASAÜSTÜ YAN MENÜ (SIDEBAR) */
 .side-nav {
     width: 280px;
     height: 100vh;
@@ -25,253 +30,156 @@ body {
     left: 0;
     top: 0;
     border-right: 4px solid #a37e2c;
-    padding: 60px 25px;
+    padding: 40px 20px;
     z-index: 9999;
+    display: flex;
+    flex-direction: column;
+}
+
+.main-wrapper {
+    margin-left: 280px; /* Sidebar kadar boşluk */
+    width: calc(100% - 280px);
+    transition: all 0.3s ease;
+}
+
+/* 3. LOGO VE NAVİGASYON */
+.nav-logo { 
+    width: 50px;
+    height: auto;
+    display: block;
+    margin: 0 auto 10px;
+    object-fit: contain;
 }
 
 .brand {
     color: #fff;
     font-family: 'Playfair Display', serif;
-    font-size: 30px; /* Font büyütüldü */
     text-align: center;
-    margin-bottom: 50px;
+    margin-bottom: 40px;
+}
+
+.brand span {
+    display: block;
+    font-size: 20px;
+    letter-spacing: 2px;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+.nav-menu {
+    display: flex;
+    flex-direction: column;
 }
 
 .nav-link {
     color: #fff;
-    font-size: 20px; /* Font büyütüldü */
+    font-size: 18px;
     display: block;
-    padding: 15px 0;
+    padding: 12px 15px;
     transition: 0.3s;
     font-weight: 600;
 }
 
 .nav-link:hover { color: #a37e2c; padding-left: 10px; }
 
-.contact-btn { background: #a37e2c; text-align: center; border-radius: 8px; margin-top: 20px; }
-
-.main-wrapper {
-    margin-left: 280px;
-    width: calc(100% - 280px);
+.nav-link.active {
+    color: #a37e2c !important;
+    background: rgba(255, 255, 255, 0.1);
+    border-left: 4px solid #a37e2c;
 }
 
+.contact-btn { 
+    background: #a37e2c; 
+    text-align: center; 
+    border-radius: 8px; 
+    margin-top: 20px;
+    color: white;
+}
+
+/* 4. İÇERİK ALANLARI (SECTIONS) */
 .section {
     min-height: 100vh;
-    padding: 100px 10%;
+    padding: 80px 5%;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     text-align: center;
+    width: 100%;
 }
 
 .hero-area {
     background: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)), url('https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1920&q=80');
     background-size: cover;
+    background-position: center;
     color: white;
 }
 
-.hero-area h1 { font-size: 5rem; font-family: 'Playfair Display', serif; margin-bottom: 20px; }
+.hero-area h1 { font-size: 4rem; font-family: 'Playfair Display', serif; margin-bottom: 20px; }
 .gold-text { color: #a37e2c; }
 
-.section-title { font-size: 50px; font-family: 'Playfair Display', serif; color: #004d2e; }
-.gold-divider { width: 100px; height: 5px; background: #a37e2c; margin: 20px auto 50px; }
-
-.grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; width: 100%; }
-.card { padding: 40px; background: #f9f9f9; border-radius: 15px; border-bottom: 8px solid #a37e2c; }
+.section-title { font-size: 45px; font-family: 'Playfair Display', serif; color: #004d2e; }
+.gold-divider { width: 100px; height: 4px; background: #a37e2c; margin: 20px auto 40px; }
 
 .dark-bg { background: #002b1a; color: white; }
 .dark-bg .section-title { color: white; }
 
-/* HİZMET KUTUCUKLARI ETKİLEŞİMİ */
-.card {
-    transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1); /* Çok yumuşak bir tepki verir */
-    cursor: pointer;
-    position: relative;
-    overflow: hidden;
+/* 5. KARTLAR VE GRID SİSTEMİ */
+.grid, .testimonial-grid, .contact-grid { 
+    display: grid; 
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); 
+    gap: 25px; 
+    width: 100%; 
 }
 
-/* Mouse üzerine geldiğinde (Hover durumu) */
-.card:hover {
-    transform: translateY(-10px) scale(1.03); /* Yukarı doğru 10px kayar ve hafif büyür */
-    box-shadow: 0 20px 40px rgba(0, 77, 46, 0.15); /* Rolex yeşili tonunda yumuşak gölge */
-    background: #ffffff;
-    border-bottom-width: 10px; /* Altın şerit kalınlaşarak vurgu yapar */
-}
-
-/* Kartın içindeki başlığın rengini değiştirme (opsiyonel) */
-.card:hover h3 {
-    color: #a37e2c; /* Mouse üzerindeyken başlık altın rengine döner */
-    transition: 0.3s;
-}
-
-/* --- LOGO VE MARKA ALANI DÜZENLEME --- */
-
-/* Logo Resmini Küçültme */
-.nav-logo, .main-logo, .logo-img { 
-    width: 50px !important;  /* Buradaki rakamı (50) ihtiyacına göre düşürebilirsin */
-    height: auto !important;
-    display: block !important;
-    margin: 0 auto 10px auto !important; /* Üstten 0, yanlardan otomatik, alttan 10px boşluk */
-    object-fit: contain;
-}
-
-/* Logo Altındaki Marka Yazısı (FORTUNE) */
-.brand span, .logo-title, .logo-text {
-    display: block !important;
-    font-size: 20px !important; /* Yazı fontu büyüklüğü */
-    text-align: center !important;
-    letter-spacing: 2px !important;
-    font-weight: 700 !important;
-    color: #ffffff !important;
-    text-transform: uppercase;
-}
-
-/* Logo ve Yazının İçinde Bulunduğu Alan */
-.brand, .logo-section, .side-logo-area {
-    width: 100% !important;
-    padding-bottom: 30px !important; /* Menü elemanlarıyla arasındaki mesafe */
-    text-align: center !important;
-}
-
-/* --- İLETİŞİM ALANI YAN YANA DİZME (FIX) --- */
-
-#iletisim .container {
-    display: flex;
-    flex-direction: column;
-    align-items: center; /* Başlık ve çizgiyi ortalar */
-}
-
-.contact-grid {
-    display: flex; /* Kutuları yan yana getirir */
-    justify-content: center; /* Kutuları ortada toplar */
-    gap: 30px; /* Kutular arasındaki boşluk */
-    width: 100%;
-    margin-top: 40px;
-    flex-wrap: wrap; /* Ekran küçülünce alt alta geçer (mobilde bozulmaz) */
-}
-
-.contact-item {
-    flex: 1; /* Kutuların eşit genişlikte olmasını sağlar */
-    min-width: 280px; /* Kutular çok fazla daralmasın */
-    max-width: 350px; /* Kutular çok fazla yayılmasın */
-    background: #fdfdfd;
-    padding: 40px 20px;
-    border-radius: 15px;
-    text-align: center;
+.card, .testimonial-card, .contact-item { 
+    padding: 30px; 
+    background: #f9f9f9; 
+    border-radius: 15px; 
+    border-bottom: 6px solid #a37e2c; 
     transition: all 0.4s ease;
-    border: 1px solid rgba(0, 77, 46, 0.1);
-    color: #111;
+}
+
+.card:hover { transform: translateY(-10px); box-shadow: 0 15px 30px rgba(0,0,0,0.1); }
+
+/* 6. SABİT İLETİŞİM BARI (ALTTAKİ) */
+.fixed-contact-bar {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
     display: flex;
-    flex-direction: column;
-    align-items: center;
+    gap: 15px;
+    background: rgba(0, 77, 46, 0.9);
+    padding: 10px 20px;
+    border-radius: 50px;
+    border: 1px solid #a37e2c;
+    backdrop-filter: blur(8px);
+    z-index: 10000;
 }
 
-/* Hover Efekti */
-.contact-item:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 15px 35px rgba(163, 126, 44, 0.2);
-    border-color: #a37e2c;
-}
+.bar-item { color: white; font-size: 14px; display: flex; align-items: center; gap: 5px; }
 
-.icon-box {
-    font-size: 45px;
-    margin-bottom: 15px;
-    color: #a37e2c;
-}
+/* 7. KESİN MOBİL UYUMLULUK SORGUSU (MEDIA QUERY) */
+@media (max-width: 992px) {
+    body {
+        flex-direction: column; /* Yan yana yapıyı boz, alt alta getir */
+    }
 
-/* AKTİF MENÜ DÜZENİ */
-.nav-link.active {
-    color: #a37e2c !important; /* Altın sarısı olur */
-    background: rgba(255, 255, 255, 0.1); /* Hafif şeffaf bir arka plan */
-    padding-left: 20px !important; /* Hafif sağa kayar */
-    border-left: 4px solid #a37e2c; /* Soluna ince bir altın çizgi atar */
-}
-
-/* --- MÜŞTERİ YORUMLARI TASARIMI --- */
-.testimonial-grid {
-    display: flex;
-    justify-content: center;
-    gap: 30px;
-    flex-wrap: wrap;
-    margin-top: 50px;
-}
-
-.testimonial-card {
-    background: rgba(255, 255, 255, 0.05); /* Çok hafif şeffaf arka plan */
-    padding: 40px;
-    border-radius: 20px;
-    flex: 1;
-    min-width: 300px;
-    max-width: 400px;
-    border: 1px solid rgba(163, 126, 44, 0.2); /* İnce altın çerçeve */
-    transition: 0.4s;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-}
-
-.testimonial-card:hover {
-    background: rgba(255, 255, 255, 0.1);
-    transform: translateY(-5px);
-    border-color: #a37e2c;
-}
-
-.stars {
-    color: #a37e2c;
-    font-size: 20px;
-    margin-bottom: 20px;
-}
-
-.testimonial-card p {
-    font-style: italic;
-    font-size: 1.1rem;
-    line-height: 1.6;
-    margin-bottom: 30px;
-    color: #ddd;
-}
-
-.client-info strong {
-    display: block;
-    font-size: 18px;
-    color: #fff;
-}
-
-.client-info span {
-    font-size: 14px;
-    color: #a37e2c;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-}
-
-/* --- MOBİL UYUMLULUK (RESPONSIVE) FIX --- */
-
-@media (max-width: 768px) {
-    /* 1. Yan menüyü üst menüye çeviriyoruz */
     .side-nav {
         width: 100% !important;
         height: auto !important;
-        position: relative !important;
+        position: relative !important; /* Solda sabit durmasın */
         padding: 20px !important;
         border-right: none !important;
         border-bottom: 3px solid #a37e2c !important;
     }
 
-    /* 2. Logoyu ve yazıyı yan yana getir */
-    .brand {
-        margin-bottom: 20px !important;
-        display: flex !important;
-        align-items: center !important;
-        justify-content: center !important;
-        gap: 15px !important;
+    .main-wrapper {
+        margin-left: 0 !important; /* Sıkışmayı bitiren kritik kod */
+        width: 100% !important;
     }
 
-    .nav-logo {
-        width: 40px !important;
-        margin: 0 !important;
-    }
-
-    /* 3. Menü linklerini yan yana diz */
     .nav-menu {
         flex-direction: row !important;
         flex-wrap: wrap !important;
@@ -281,321 +189,32 @@ body {
 
     .nav-link {
         font-size: 14px !important;
-        padding: 8px 12px !important;
+        padding: 8px !important;
+        border-left: none !important;
     }
 
-    .contact-btn {
-        margin-top: 0 !important;
-    }
-
-    /* 4. Ana içeriği tam ekran yap */
-    .main-wrapper {
-        margin-left: 0 !important;
-        width: 100% !important;
-    }
-
-    /* 5. Yazıları mobil için küçült */
     .hero-area h1 {
-        font-size: 2.5rem !important;
+        font-size: 2.2rem !important;
     }
 
     .section-title {
         font-size: 32px !important;
     }
 
+    /* Mobilde her şeyi tek sütun yap */
     .grid, .testimonial-grid, .contact-grid {
         grid-template-columns: 1fr !important;
-        display: flex !important;
-        flex-direction: column !important;
-        align-items: center !important;
     }
 
-    .card, .testimonial-card, .contact-item {
-        width: 90% !important;
-        max-width: none !important;
-    }
-}
-
-/* --- MOBİL TAM ÇÖZÜM (RESPONSIVE FIX) --- */
-
-@media (max-width: 992px) {
-    /* 1. Yan menüyü yukarıya taşı ve yatay yap */
-    .side-nav {
-        width: 100% !important;
-        height: auto !important;
-        position: relative !important; /* Sabit durmasın, sayfa akışına girsin */
-        padding: 15px 10px !important;
-        border-right: none !important;
-        border-bottom: 2px solid #a37e2c !important;
-        display: flex !important;
-        flex-direction: column !important;
-        align-items: center !important;
-    }
-
-    /* 2. Logo ve başlığı küçült, hizala */
-    .brand {
-        margin-bottom: 15px !important;
-    }
-    
-    .nav-logo {
-        width: 40px !important;
-        margin: 0 auto 5px auto !important;
-    }
-
-    .brand span {
-        font-size: 18px !important;
-    }
-
-    /* 3. Menü linklerini yan yana diz (Ekran sığmazsa alt alta geçer) */
-    .nav-menu {
-        flex-direction: row !important;
-        flex-wrap: wrap !important;
-        justify-content: center !important;
-        gap: 8px !important;
-        width: 100% !important;
-    }
-
-    .nav-link {
-        font-size: 12px !important;
-        padding: 5px 10px !important;
-        border-left: none !important; /* Masaüstündeki çizgiyi kaldır */
-    }
-
-    .nav-link.active {
-        border-bottom: 2px solid #a37e2c !important; /* Aktif sekme altta görünsün */
-        padding-left: 10px !important;
-    }
-
-    /* 4. ANA İÇERİĞİ SERBEST BIRAK (EN ÖNEMLİ KISIM) */
-    .main-wrapper {
-        margin-left: 0 !important; /* Soldaki 280px boşluğu sıfırladık */
-        width: 100% !important;
-        padding: 20px !important;
-    }
-
-    /* 5. Hero (Giriş) alanındaki dev yazıları mobile uyarla */
-    .hero-area h1 {
-        font-size: 2rem !important;
-        line-height: 1.2 !important;
-    }
-
-    /* 6. Kartları ve Gridleri tek sütun yap */
-    .grid, .testimonial-grid, .contact-grid {
-        display: flex !important;
-        flex-direction: column !important;
-        align-items: center !important;
-        gap: 20px !important;
-    }
-
-    .card, .testimonial-card, .contact-item {
-        width: 100% !important;
-        max-width: 100% !important;
-    }
-}
-
-/* --- SABİT İLETİŞİM BARI CSS --- */
-.fixed-contact-bar {
-    position: fixed;
-    bottom: 20px; /* Ekranın altından mesafe */
-    left: 50%;
-    transform: translateX(-50%); /* Tam ortaya hizalar */
-    display: flex;
-    gap: 15px;
-    background: rgba(0, 77, 46, 0.85); /* Rolex yeşili, hafif şeffaf */
-    padding: 12px 25px;
-    border-radius: 50px; /* Oval görünüm */
-    border: 1px solid #a37e2c; /* Altın çerçeve */
-    backdrop-filter: blur(10px); /* Arka planı bulanıklaştırır (Lüks efekt) */
-    z-index: 9999; /* Her şeyin üstünde durması için */
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-}
-
-.bar-item {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    text-decoration: none;
-    color: white;
-    font-size: 14px;
-    font-weight: 600;
-    transition: 0.3s;
-}
-
-.bar-item:hover {
-    color: #a37e2c;
-    transform: translateY(-2px);
-}
-
-.bar-icon {
-    font-size: 18px;
-}
-
-/* Mobilde yazıları gizleyip sadece ikonları gösterebiliriz (daha temiz durur) */
-@media (max-width: 600px) {
-    .bar-text {
-        display: none;
-    }
     .fixed-contact-bar {
-        padding: 10px 20px;
-        bottom: 10px;
-        gap: 25px;
+        width: 90%;
+        justify-content: space-around;
     }
-    .bar-icon {
-        font-size: 22px;
-    }
+
+    .bar-text { display: none; } /* Mobilde yer kaplamasın */
 }
 
-/* --- FULL RESPONSIVE (MOBİL UYUMLULUK) ÇÖZÜMÜ --- */
-
-/* Ekran genişliği 992px'den küçükse (Tablet ve Telefonlar) */
-@media (max-width: 992px) {
-    
-    /* 1. Yan Menüyü Üst Menüye Dönüştür */
-    .side-nav {
-        width: 100% !important;
-        height: auto !important;
-        position: relative !important; /* Artık solda sabit değil, yukarıda */
-        padding: 15px !important;
-        border-right: none !important;
-        border-bottom: 2px solid #a37e2c !important;
-        display: flex !important;
-        flex-direction: column !important;
-        align-items: center !important;
-    }
-
-    /* 2. Ana İçeriği Serbest Bırak (Sıkışmayı Önler) */
-    .main-wrapper {
-        margin-left: 0 !important; /* Soldaki 280px boşluğu sıfırladık */
-        width: 100% !important;
-        padding: 15px !important;
-    }
-
-    /* 3. Menü Linklerini Yan Yana Diz */
-    .nav-menu {
-        flex-direction: row !important;
-        flex-wrap: wrap !important;
-        justify-content: center !important;
-        gap: 10px !important;
-        margin-top: 10px !important;
-    }
-
-    .nav-link {
-        font-size: 13px !important;
-        padding: 5px 10px !important;
-        border-left: none !important;
-    }
-
-    /* 4. Hero Alanı ve Yazıları Ölçeklendir */
-    .hero-area h1 {
-        font-size: 2.2rem !important; /* Dev yazı mobilde sığsın */
-        line-height: 1.2 !important;
-    }
-
-    /* 5. Kutucukları (Hizmetler/Yorumlar) Alt Alta Diz */
-    .grid, .testimonial-grid, .contact-grid {
-        display: grid !important;
-        grid-template-columns: 1fr !important; /* Yan yana değil, tek sütun */
-        gap: 20px !important;
-        width: 100% !important;
-    }
-
-    .card, .testimonial-card, .contact-item {
-        width: 100% !important;
-        max-width: 100% !important;
-    }
-
-    /* 6. Sabit İletişim Barını Ortala */
-    .fixed-contact-bar {
-        width: 90% !important;
-        max-width: 350px !important;
-        bottom: 15px !important;
-    }
-}
-
-/* Küçük Telefonlar İçin (Ekstra Ayar) */
 @media (max-width: 480px) {
-    .hero-area h1 {
-        font-size: 1.8rem !important;
-    }
-    
-    .nav-link {
-        font-size: 11px !important;
-    }
-}
-
-/* --- %100 MOBİL UYUMLULUK VE SIKIŞMA FIX --- */
-
-@media (max-width: 991px) {
-    /* 1. Yan menüyü sol taraftan kurtar ve yukarı al */
-    .side-nav {
-        width: 100% !important;
-        height: auto !important;
-        position: relative !important; /* Artık solda sabit değil */
-        padding: 20px 10px !important;
-        border-right: none !important;
-        border-bottom: 2px solid #a37e2c !important;
-        display: flex !important;
-        flex-direction: column !important;
-        align-items: center !important;
-    }
-
-    /* 2. Ana içeriği ezen 'margin-left'i sıfırla (EN ÖNEMLİ KISIM) */
-    .main-wrapper {
-        margin-left: 0 !important; /* Masaüstündeki 280px boşluğu tamamen kaldırdık */
-        width: 100% !important;
-        padding: 0 !important; /* İçerik artık tüm genişliği kullanabilir */
-    }
-
-    /* 3. Menü elemanlarını yan yana diz (Daha az yer kaplaması için) */
-    .nav-menu {
-        flex-direction: row !important;
-        flex-wrap: wrap !important;
-        justify-content: center !important;
-        gap: 10px !important;
-        margin-top: 15px !important;
-    }
-
-    .nav-link {
-        font-size: 13px !important;
-        padding: 6px 12px !important;
-        border-left: none !important;
-    }
-
-    /* 4. Hero alanındaki dev başlığı mobil boyutuna çek */
-    .hero-area h1 {
-        font-size: 1.8rem !important; /* Yazı artık ekrandan taşmayacak */
-        line-height: 1.3 !important;
-        padding: 0 20px !important;
-    }
-
-    /* 5. Tüm bölümleri (section) mobil genişliğine uyarla */
-    .section {
-        padding: 60px 20px !important;
-        width: 100% !important;
-        min-height: auto !important;
-    }
-
-    /* 6. Hizmetler ve Referans kartlarını tek sütun yap */
-    .grid, .testimonial-grid, .contact-grid {
-        display: flex !important;
-        flex-direction: column !important;
-        align-items: center !important;
-        width: 100% !important;
-    }
-
-    .card, .testimonial-card, .contact-item {
-        width: 100% !important;
-        max-width: 100% !important;
-        margin-bottom: 20px !important;
-    }
-}
-
-/* Çok küçük telefonlar için yazı tipi ayarı */
-@media (max-width: 480px) {
-    .hero-area h1 {
-        font-size: 1.5rem !important;
-    }
-    .nav-link {
-        font-size: 11px !important;
-    }
+    .hero-area h1 { font-size: 1.8rem !important; }
+    .section { padding: 50px 20px !important; }
 }
