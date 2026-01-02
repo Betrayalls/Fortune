@@ -228,3 +228,71 @@ body {
     .bar-text { font-size: 10px !important; }
     .fixed-contact-bar { gap: 15px !important; }
 }
+
+/* ============================================================
+   1. MASAÜSTÜ (PC) İÇİN ÖZEL DÜZELTMELER
+   ============================================================ */
+@media (min-width: 993px) {
+    /* Müşteri Yorumları Kartları (PC) */
+    .testimonial-card {
+        background: rgba(255, 255, 255, 0.05) !important; /* PC'de şeffaf koyu tema */
+        border: 1px solid rgba(163, 126, 44, 0.3) !important;
+        color: #ffffff !important; /* Yazılar PC'de beyaz kalsın */
+    }
+
+    .testimonial-card p, 
+    .testimonial-card .client-info strong {
+        color: #ffffff !important;
+    }
+
+    /* Sabit İletişim Barı (PC) */
+    .fixed-contact-bar {
+        width: auto !important;
+        padding: 12px 30px !important;
+        gap: 30px !important;
+    }
+
+    .bar-text {
+        display: inline-block !important; /* PC'de yazılar hep görünsün */
+        font-size: 14px !important;
+    }
+
+    .bar-item {
+        flex-direction: row !important; /* PC'de ikon ve yazı yan yana */
+    }
+}
+
+/* ============================================================
+   2. MOBİL (TELEFON) İÇİN ÖZEL DÜZELTMELER
+   ============================================================ */
+@media (max-width: 992px) {
+    /* Müşteri Yorumları Kartları (Mobil) */
+    .testimonial-card {
+        background: #ffffff !important; /* Mobilde beyaz kart */
+        color: #111111 !important; /* Mobilde siyah yazı */
+        box-shadow: 0 10px 20px rgba(0,0,0,0.2) !important;
+    }
+
+    .testimonial-card p, 
+    .testimonial-card .client-info strong {
+        color: #111111 !important; /* Okunabilirlik için siyah */
+    }
+
+    .testimonial-card .stars {
+        color: #a37e2c !important;
+    }
+
+    /* Sabit İletişim Barı (Mobil) */
+    .fixed-contact-bar {
+        width: 90% !important;
+        gap: 15px !important;
+    }
+
+    .bar-item {
+        flex-direction: column !important; /* Mobilde ikon üstte yazı altta */
+    }
+
+    .bar-text {
+        font-size: 10px !important;
+    }
+}
