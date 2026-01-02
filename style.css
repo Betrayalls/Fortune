@@ -522,3 +522,80 @@ body {
         font-size: 11px !important;
     }
 }
+
+/* --- %100 MOBİL UYUMLULUK VE SIKIŞMA FIX --- */
+
+@media (max-width: 991px) {
+    /* 1. Yan menüyü sol taraftan kurtar ve yukarı al */
+    .side-nav {
+        width: 100% !important;
+        height: auto !important;
+        position: relative !important; /* Artık solda sabit değil */
+        padding: 20px 10px !important;
+        border-right: none !important;
+        border-bottom: 2px solid #a37e2c !important;
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+    }
+
+    /* 2. Ana içeriği ezen 'margin-left'i sıfırla (EN ÖNEMLİ KISIM) */
+    .main-wrapper {
+        margin-left: 0 !important; /* Masaüstündeki 280px boşluğu tamamen kaldırdık */
+        width: 100% !important;
+        padding: 0 !important; /* İçerik artık tüm genişliği kullanabilir */
+    }
+
+    /* 3. Menü elemanlarını yan yana diz (Daha az yer kaplaması için) */
+    .nav-menu {
+        flex-direction: row !important;
+        flex-wrap: wrap !important;
+        justify-content: center !important;
+        gap: 10px !important;
+        margin-top: 15px !important;
+    }
+
+    .nav-link {
+        font-size: 13px !important;
+        padding: 6px 12px !important;
+        border-left: none !important;
+    }
+
+    /* 4. Hero alanındaki dev başlığı mobil boyutuna çek */
+    .hero-area h1 {
+        font-size: 1.8rem !important; /* Yazı artık ekrandan taşmayacak */
+        line-height: 1.3 !important;
+        padding: 0 20px !important;
+    }
+
+    /* 5. Tüm bölümleri (section) mobil genişliğine uyarla */
+    .section {
+        padding: 60px 20px !important;
+        width: 100% !important;
+        min-height: auto !important;
+    }
+
+    /* 6. Hizmetler ve Referans kartlarını tek sütun yap */
+    .grid, .testimonial-grid, .contact-grid {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        width: 100% !important;
+    }
+
+    .card, .testimonial-card, .contact-item {
+        width: 100% !important;
+        max-width: 100% !important;
+        margin-bottom: 20px !important;
+    }
+}
+
+/* Çok küçük telefonlar için yazı tipi ayarı */
+@media (max-width: 480px) {
+    .hero-area h1 {
+        font-size: 1.5rem !important;
+    }
+    .nav-link {
+        font-size: 11px !important;
+    }
+}
