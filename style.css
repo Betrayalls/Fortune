@@ -160,61 +160,71 @@ body {
 
 .bar-item { color: white; font-size: 14px; display: flex; align-items: center; gap: 5px; }
 
-/* 7. KESİN MOBİL UYUMLULUK SORGUSU (MEDIA QUERY) */
-@media (max-width: 992px) {
-    body {
-        flex-direction: column; /* Yan yana yapıyı boz, alt alta getir */
-    }
+/* --- MOBİL SON DOKUNUŞ VE FIX --- */
 
+@media (max-width: 992px) {
+    /* 1. Yan Menü ve İçerik Sıkışma Fix */
+    body { flex-direction: column; }
     .side-nav {
         width: 100% !important;
         height: auto !important;
-        position: relative !important; /* Solda sabit durmasın */
+        position: relative !important;
         padding: 20px !important;
         border-right: none !important;
         border-bottom: 3px solid #a37e2c !important;
     }
-
     .main-wrapper {
-        margin-left: 0 !important; /* Sıkışmayı bitiren kritik kod */
+        margin-left: 0 !important;
         width: 100% !important;
     }
 
-    .nav-menu {
-        flex-direction: row !important;
-        flex-wrap: wrap !important;
-        justify-content: center !important;
-        gap: 10px !important;
+    /* 2. Müşteri Yorumları Mobil Düzenleme */
+    .testimonial-grid {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        gap: 20px !important;
+    }
+    .testimonial-card {
+        width: 90% !important;
+        max-width: 100% !important;
+        background: #ffffff !important; /* Kartları beyaz yapıyoruz */
+        padding: 30px 20px !important;
+    }
+    .testimonial-card p, 
+    .testimonial-card .client-info strong {
+        color: #111 !important; /* Beyaz kartın içindeki yazıları siyah/koyu yapıyoruz */
+    }
+    .testimonial-card .client-info span {
+        color: #a37e2c !important;
     }
 
-    .nav-link {
-        font-size: 14px !important;
-        padding: 8px !important;
-        border-left: none !important;
-    }
-
-    .hero-area h1 {
-        font-size: 2.2rem !important;
-    }
-
-    .section-title {
-        font-size: 32px !important;
-    }
-
-    /* Mobilde her şeyi tek sütun yap */
-    .grid, .testimonial-grid, .contact-grid {
-        grid-template-columns: 1fr !important;
-    }
-
+    /* 3. Sabit İletişim Barı - Yazıları Geri Getir */
     .fixed-contact-bar {
-        width: 90%;
-        justify-content: space-around;
+        width: 95% !important;
+        max-width: 500px !important;
+        padding: 10px 15px !important;
+        bottom: 15px !important;
+        justify-content: center !important;
+        gap: 20px !important;
     }
-
-    .bar-text { display: none; } /* Mobilde yer kaplamasın */
+    .bar-text { 
+        display: inline-block !important; /* Mobilde yazıları görünür yaptık */
+        font-size: 11px !important;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+    }
+    .bar-item {
+        flex-direction: column !important; /* İkon üstte yazı altta olsun */
+        gap: 4px !important;
+    }
+    .bar-icon {
+        font-size: 18px !important;
+    }
 }
 
+/* Çok Küçük Ekranlar İçin (Opsiyonel) */
 @media (max-width: 480px) {
-    .hero-area h1 { font-size: 1.8rem !important; }
-    .section { padding: 50px 20px !important; }
+    .bar-text { font-size: 10px !important; }
+    .fixed-contact-bar { gap: 15px !important; }
 }
