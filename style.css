@@ -243,3 +243,75 @@ body {
     text-transform: uppercase;
     letter-spacing: 1px;
 }
+
+/* --- MOBİL UYUMLULUK (RESPONSIVE) FIX --- */
+
+@media (max-width: 768px) {
+    /* 1. Yan menüyü üst menüye çeviriyoruz */
+    .side-nav {
+        width: 100% !important;
+        height: auto !important;
+        position: relative !important;
+        padding: 20px !important;
+        border-right: none !important;
+        border-bottom: 3px solid #a37e2c !important;
+    }
+
+    /* 2. Logoyu ve yazıyı yan yana getir */
+    .brand {
+        margin-bottom: 20px !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        gap: 15px !important;
+    }
+
+    .nav-logo {
+        width: 40px !important;
+        margin: 0 !important;
+    }
+
+    /* 3. Menü linklerini yan yana diz */
+    .nav-menu {
+        flex-direction: row !important;
+        flex-wrap: wrap !important;
+        justify-content: center !important;
+        gap: 10px !important;
+    }
+
+    .nav-link {
+        font-size: 14px !important;
+        padding: 8px 12px !important;
+    }
+
+    .contact-btn {
+        margin-top: 0 !important;
+    }
+
+    /* 4. Ana içeriği tam ekran yap */
+    .main-wrapper {
+        margin-left: 0 !important;
+        width: 100% !important;
+    }
+
+    /* 5. Yazıları mobil için küçült */
+    .hero-area h1 {
+        font-size: 2.5rem !important;
+    }
+
+    .section-title {
+        font-size: 32px !important;
+    }
+
+    .grid, .testimonial-grid, .contact-grid {
+        grid-template-columns: 1fr !important;
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+    }
+
+    .card, .testimonial-card, .contact-item {
+        width: 90% !important;
+        max-width: none !important;
+    }
+}
