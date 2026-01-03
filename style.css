@@ -337,10 +337,11 @@ body {
 .hero-area {
     /* img klasöründeki görselin adını ve uzantısını (jpg, png vb.) tam yazmalısın */
     background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), 
-                url('../img/arkahero.jpg'); 
+                url('img/arkahero.jpg'); 
     
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
     color: white;
 }
+
