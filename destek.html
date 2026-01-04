@@ -22,17 +22,18 @@
 <body>
 
 <div class="support-container">
-    <div id="statusText" style="text-align:center; color:#a37e2c; font-weight: bold; margin-bottom:10px;">Destek Talebi Oluştur</div>
+    <div id="statusText" style="text-align:center; color:#a37e2c; font-weight: bold; margin-bottom:10px;">Destek Sistemi Hazır</div>
     <div class="chat-box" id="chatContainer">
-        <div class="msg bot">Fortune Agency: Merhaba! Sorununuzu yazıp gönderin, ardından Google hesabınızı seçerek talebinizi onaylayın.</div>
+        <div class="msg bot">Fortune Agency: Merhaba! Lütfen sorununuzu yazın. Gönder'e bastığınızda Google girişine yönlendirileceksiniz.</div>
     </div>
     <div class="input-group">
-        <input type="text" id="userMsg" placeholder="Mesajınız..." autocomplete="off">
-        <button class="btn-send" onclick="handleSupport()">Gönder</button>
+        <input type="text" id="userMsg" placeholder="Mesajınızı buraya yazın..." autocomplete="off">
+        <button type="button" class="btn-send" id="mainSendBtn">Gönder</button>
     </div>
 </div>
 
 <script>
+    // 1. Firebase Yapılandırması (Senin verilerin)
     const firebaseConfig = {
         apiKey: "AIzaSyBc0BzhigcSpV0pCG7UB74UMipAq3zf-AQ",
         authDomain: "fortuneticket-59a4b.firebaseapp.com",
@@ -42,27 +43,34 @@
         appId: "1:576445593804:web:5903e951157b38d8aaa69"
     };
 
-    // Firebase'i başlat
-    if (!firebase.apps.length) {
-        firebase.initializeApp(firebaseConfig);
+    // 2. Firebase Başlatma Kontrolü
+    try {
+        if (!firebase.apps.length) {
+            firebase.initializeApp(firebaseConfig);
+            console.log("Firebase başarıyla başlatıldı.");
+        }
+    } catch (e) {
+        alert("Firebase başlatılamadı: " + e.message);
     }
+
     const auth = firebase.auth();
     const db = firebase.firestore();
 
-    // SAYFA YÜKLENDİĞİNDE: Google'dan dönüş yapılıp yapılmadığını kontrol et
+    // 3. Yönlendirmeden Dönüşü Dinle
     auth.getRedirectResult().then((result) => {
         if (result && result.user) {
             const savedMsg = localStorage.getItem('pendingMsg');
             if (savedMsg) {
-                saveTicketToFirebase(result.user, savedMsg);
+                saveTicket(result.user, savedMsg);
                 localStorage.removeItem('pendingMsg');
             }
         }
     }).catch((error) => {
-        console.error("Yönlendirme hatası:", error);
+        alert("Giriş Hatası: " + error.message);
     });
 
-    async function handleSupport() {
+    // 4. Buton Tıklama Olayı (HTML içindeki onclick yerine bu daha güvenlidir)
+    document.getElementById('mainSendBtn').addEventListener('click', function() {
         const msgInput = document.getElementById('userMsg');
         const msg = msgInput.value.trim();
         
@@ -71,22 +79,21 @@
             return;
         }
 
-        // Mesajı geçici olarak hafızaya al (Redirect'ten dönünce okumak için)
+        console.log("Mesaj gönderiliyor: " + msg);
         localStorage.setItem('pendingMsg', msg);
 
-        // Kullanıcı zaten giriş yapmış mı?
         const user = auth.currentUser;
         if (user) {
-            saveTicketToFirebase(user, msg);
+            saveTicket(user, msg);
             msgInput.value = "";
         } else {
-            // Giriş yapmamışsa Google Redirect başlat
             const provider = new firebase.auth.GoogleAuthProvider();
+            // Yönlendirme başlatılıyor
             auth.signInWithRedirect(provider);
         }
-    }
+    });
 
-    function saveTicketToFirebase(user, msg) {
+    function saveTicket(user, msg) {
         db.collection("tickets").add({
             name: user.displayName,
             email: user.email,
@@ -94,22 +101,14 @@
             status: "Açık",
             timestamp: firebase.firestore.FieldValue.serverTimestamp()
         }).then(() => {
-            document.getElementById('statusText').innerText = "Talebiniz İletildi!";
-            addMessageToBox(msg, 'user');
-            addMessageToBox("Teşekkürler " + user.displayName + ", talebiniz başarıyla kaydedildi. En kısa sürede e-posta adresinize dönüş yapılacaktır.", 'bot');
+            document.getElementById('statusText').innerText = "Talebiniz Alındı!";
+            const container = document.getElementById('chatContainer');
+            container.innerHTML += `<div class="msg user">${msg}</div>`;
+            container.innerHTML += `<div class="msg bot">Talebiniz kaydedildi, teşekkürler ${user.displayName}.</div>`;
+            container.scrollTop = container.scrollHeight;
         }).catch((err) => {
-            console.error("Firestore hatası:", err);
-            alert("Mesaj gönderilirken bir hata oluştu.");
+            alert("Veritabanı Hatası: " + err.message);
         });
-    }
-
-    function addMessageToBox(text, type) {
-        const container = document.getElementById('chatContainer');
-        const div = document.createElement('div');
-        div.className = "msg " + type;
-        div.innerText = text;
-        container.appendChild(div);
-        container.scrollTop = container.scrollHeight;
     }
 </script>
 </body>
