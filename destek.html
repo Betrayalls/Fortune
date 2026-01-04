@@ -9,109 +9,96 @@
 
     <style>
         body { background: #002b1a; color: white; font-family: 'Poppins', sans-serif; margin: 0; display: flex; justify-content: center; align-items: center; min-height: 100vh; }
-        .support-container { width: 90%; max-width: 500px; background: rgba(0, 77, 46, 0.95); padding: 30px; border-radius: 15px; border: 2px solid #a37e2c; }
-        .chat-box { height: 300px; overflow-y: auto; border: 1px solid rgba(163, 126, 44, 0.2); padding: 15px; margin: 15px 0; border-radius: 10px; display: flex; flex-direction: column; gap: 10px; }
-        .msg { padding: 12px; border-radius: 10px; font-size: 14px; max-width: 85%; }
-        .bot { background: #a37e2c; align-self: flex-start; }
-        .user { background: rgba(255,255,255,0.1); align-self: flex-end; border: 1px solid #a37e2c; }
+        .support-container { width: 90%; max-width: 500px; background: rgba(0, 77, 46, 0.95); padding: 30px; border-radius: 15px; border: 2px solid #a37e2c; box-shadow: 0 10px 40px rgba(0,0,0,0.5); }
+        .chat-box { height: 300px; overflow-y: auto; border: 1px solid rgba(163, 126, 44, 0.2); padding: 15px; margin: 15px 0; border-radius: 10px; display: flex; flex-direction: column; gap: 10px; background: rgba(0,0,0,0.2); }
+        .msg { padding: 12px; border-radius: 10px; font-size: 14px; max-width: 85%; line-height: 1.4; }
+        .bot { background: #a37e2c; align-self: flex-start; border-bottom-left-radius: 2px; }
+        .user { background: rgba(255,255,255,0.1); align-self: flex-end; border: 1px solid #a37e2c; border-bottom-right-radius: 2px; }
         .input-group { display: flex; gap: 10px; }
         input { flex: 1; padding: 12px; border-radius: 8px; border: 1px solid #a37e2c; background: transparent; color: white; outline: none; }
-        .btn-send { background: #a37e2c; border: none; padding: 10px 20px; color: white; border-radius: 8px; cursor: pointer; font-weight: bold; }
+        .btn-send { background: #a37e2c; border: none; padding: 10px 20px; color: white; border-radius: 8px; cursor: pointer; font-weight: bold; transition: 0.3s; }
+        .btn-send:hover { background: #8a6a25; }
+        #statusText { text-align: center; color: #a37e2c; font-weight: bold; margin-bottom: 10px; }
     </style>
 </head>
 <body>
 
 <div class="support-container">
-    <div id="statusText" style="text-align:center; color:#a37e2c; font-weight: bold; margin-bottom:10px;">Destek Sistemi Hazır</div>
+    <div id="statusText">Fortune Destek Sistemi</div>
     <div class="chat-box" id="chatContainer">
-        <div class="msg bot">Fortune Agency: Merhaba! Lütfen sorununuzu yazın. Gönder'e bastığınızda Google girişine yönlendirileceksiniz.</div>
+        <div class="msg bot">Fortune Agency: Merhaba! Sorununuzu yazın ve Gönder'e basın. Google ile giriş yaptıktan sonra talebiniz bize ulaşacaktır.</div>
     </div>
     <div class="input-group">
-        <input type="text" id="userMsg" placeholder="Mesajınızı buraya yazın..." autocomplete="off">
-        <button type="button" class="btn-send" id="mainSendBtn">Gönder</button>
+        <input type="text" id="userMsg" placeholder="Sorununuzu buraya yazın..." autocomplete="off">
+        <button class="btn-send" id="mainSendBtn">Gönder</button>
     </div>
 </div>
 
 <script>
-    // 1. Firebase Yapılandırması (Senin verilerin)
-const firebaseConfig = {
-    apiKey: "AIzaSyBc0BzhigcSpV0pCG7UB74UMipAq3zf-AQ",
-    authDomain: "fortuneticket-59a4b.firebaseapp.com",
-    projectId: "fortuneticket-59a4b",
-    storageBucket: "fortuneticket-59a4b.firebasestorage.app",
-    messagingSenderId: "576445593804",
-    appId: "1:576445593804:web:5903e951157b38d8aaa69",
-    measurementId: "G-NQCJV6XDMZ"
-};
+    // Sizin verdiğiniz yeni API anahtarı ile güncellendi
+    const firebaseConfig = {
+        apiKey: "AIzaSyCiVeJn1mZs5-u8wPAt7sFNxbiQwsXGzkM",
+        authDomain: "fortuneticket-59a4b.firebaseapp.com",
+        projectId: "fortuneticket-59a4b",
+        storageBucket: "fortuneticket-59a4b.firebasestorage.app",
+        messagingSenderId: "576445593804",
+        appId: "1:576445593804:web:5903e951157b38d8aaa69"
+    };
 
-    // 2. Firebase Başlatma Kontrolü
-    try {
-        if (!firebase.apps.length) {
-            firebase.initializeApp(firebaseConfig);
-            console.log("Firebase başarıyla başlatıldı.");
-        }
-    } catch (e) {
-        alert("Firebase başlatılamadı: " + e.message);
-    }
-
+    // Firebase'i Başlat
+    firebase.initializeApp(firebaseConfig);
     const auth = firebase.auth();
     const db = firebase.firestore();
 
-    // 3. Yönlendirmeden Dönüşü Dinle
-    auth.getRedirectResult().then((result) => {
-        if (result && result.user) {
-            const savedMsg = localStorage.getItem('pendingMsg');
-            if (savedMsg) {
-                saveTicket(result.user, savedMsg);
-                localStorage.removeItem('pendingMsg');
-            }
-        }
-    }).catch((error) => {
-        alert("Giriş Hatası: " + error.message);
-    });
-
-    // 4. Buton Tıklama Olayı (HTML içindeki onclick yerine bu daha güvenlidir)
-    document.getElementById('mainSendBtn').addEventListener('click', function() {
+    // Gönder Butonu İşlemi
+    document.getElementById('mainSendBtn').onclick = async function() {
         const msgInput = document.getElementById('userMsg');
-        const msg = msgInput.value.trim();
+        const message = msgInput.value.trim();
         
-        if (!msg) {
+        if (!message) {
             alert("Lütfen bir mesaj yazın.");
             return;
         }
 
-        console.log("Mesaj gönderiliyor: " + msg);
-        localStorage.setItem('pendingMsg', msg);
+        const provider = new firebase.auth.GoogleAuthProvider();
 
-        const user = auth.currentUser;
-        if (user) {
-            saveTicket(user, msg);
-            msgInput.value = "";
-        } else {
-            const provider = new firebase.auth.GoogleAuthProvider();
-            // Yönlendirme başlatılıyor
-            auth.signInWithRedirect(provider);
-        }
-    });
+        // Google ile Giriş Penceresini Aç
+        auth.signInWithPopup(provider).then((result) => {
+            const user = result.user;
+            
+            // Veritabanına Kaydet
+            db.collection("tickets").add({
+                name: user.displayName,
+                email: user.email,
+                message: message,
+                status: "Açık",
+                timestamp: firebase.firestore.FieldValue.serverTimestamp()
+            }).then(() => {
+                // Arayüzü Güncelle
+                addMessageToBox(message, 'user');
+                addMessageToBox("Talebiniz başarıyla alındı " + user.displayName + ". En kısa sürede dönüş yapacağız.", 'bot');
+                msgInput.value = "";
+                document.getElementById('statusText').innerText = "Talep İletildi ✅";
+            });
 
-    function saveTicket(user, msg) {
-        db.collection("tickets").add({
-            name: user.displayName,
-            email: user.email,
-            message: msg,
-            status: "Açık",
-            timestamp: firebase.firestore.FieldValue.serverTimestamp()
-        }).then(() => {
-            document.getElementById('statusText').innerText = "Talebiniz Alındı!";
-            const container = document.getElementById('chatContainer');
-            container.innerHTML += `<div class="msg user">${msg}</div>`;
-            container.innerHTML += `<div class="msg bot">Talebiniz kaydedildi, teşekkürler ${user.displayName}.</div>`;
-            container.scrollTop = container.scrollHeight;
-        }).catch((err) => {
-            alert("Veritabanı Hatası: " + err.message);
+        }).catch((error) => {
+            console.error("Giriş Hatası:", error);
+            if(error.code === "auth/popup-blocked") {
+                alert("Lütfen tarayıcınızın üst kısmından açılır pencerelere (Pop-up) izin verin.");
+            } else {
+                alert("Hata oluştu: " + error.message);
+            }
         });
+    };
+
+    function addMessageToBox(text, type) {
+        const container = document.getElementById('chatContainer');
+        const div = document.createElement('div');
+        div.className = "msg " + type;
+        div.innerText = text;
+        container.appendChild(div);
+        container.scrollTop = container.scrollHeight;
     }
 </script>
 </body>
 </html>
-
