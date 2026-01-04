@@ -20,9 +20,6 @@
             <a href="#hizmetler" class="nav-link">HİZMETLER</a>
             <a href="#portfolyo" class="nav-link">PORTFOLYO</a>
             <a href="#referanslar" class="nav-link">REFERANSLAR</a>
-            <a href="javascript:void(0)" class="nav-link support-btn-sidebar" onclick="openLoginModal()">
-                <span class="icon">🎧</span> DESTEK SİSTEMİ
-            </a>
         </nav>
     </aside>
 
@@ -108,8 +105,6 @@
         <span class="bar-text">Discord</span>
     </a>
 </div>
-</div>
-      
     </div>
     </main>
 
@@ -166,44 +161,6 @@
             }
         });
     });
-
-function openLoginModal() {
-    document.getElementById("loginModal").style.display = "block";
-}
-
-function closeLoginModal() {
-    document.getElementById("loginModal").style.display = "none";
-}
-
-function goToSupportPage() {
-    // Şimdilik sadece yönlendirme yapıyoruz, backend'de burada Google yetkisi alınacak
-    window.location.href = "destek.html";
-}
-
-<script>
-function openLoginModal() {
-    console.log("Butona basıldı, modal açılıyor..."); // Tarayıcı konsolunda test etmek için
-    const modal = document.getElementById("loginModal");
-    if (modal) {
-        modal.style.display = "block";
-    } else {
-        alert("Hata: loginModal id'li eleman bulunamadı!");
-    }
-}
-
-function closeLoginModal() {
-    document.getElementById("loginModal").style.display = "none";
-}
-
-// Modal dışına tıklandığında kapanması için (Opsiyonel ama iyidir)
-window.onclick = function(event) {
-    const modal = document.getElementById("loginModal");
-    if (event.target == modal) {
-        modal.style.display = "none";
-    }
-}
-</script>
-        
 </script>
 </body>
 </html>
