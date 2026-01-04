@@ -345,3 +345,63 @@ body {
     color: white;
 }
 
+
+/* CANLI DESTEK BUTONU */
+.support-btn {
+    background: rgba(163, 126, 44, 0.2);
+    border: 1px dashed #a37e2c;
+    margin-top: 20px;
+    text-align: center;
+}
+
+/* MODAL TASARIMI */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 10001;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.8);
+    backdrop-filter: blur(5px);
+}
+
+.modal-content {
+    background: #004d2e;
+    margin: 15% auto;
+    padding: 40px;
+    border: 2px solid #a37e2c;
+    width: 350px;
+    border-radius: 15px;
+    text-align: center;
+    color: white;
+}
+
+.google-login-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    width: 100%;
+    padding: 12px;
+    background: white;
+    color: #444;
+    border: none;
+    border-radius: 5px;
+    font-weight: 600;
+    cursor: pointer;
+    margin-top: 20px;
+    transition: 0.3s;
+}
+
+.google-login-btn:hover { background: #f1f1f1; }
+
+.google-login-btn img { width: 20px; }
+
+.close {
+    float: right;
+    font-size: 28px;
+    cursor: pointer;
+    color: #a37e2c;
+}
