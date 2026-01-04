@@ -6,28 +6,29 @@
     <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-auth-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore-compat.js"></script>
+
     <style>
         body { background: #002b1a; color: white; font-family: 'Poppins', sans-serif; margin: 0; display: flex; justify-content: center; align-items: center; min-height: 100vh; }
-        .support-container { width: 90%; max-width: 500px; background: rgba(0, 77, 46, 0.95); padding: 30px; border-radius: 15px; border: 1px solid #a37e2c; }
+        .support-container { width: 90%; max-width: 500px; background: rgba(0, 77, 46, 0.95); padding: 30px; border-radius: 15px; border: 2px solid #a37e2c; }
         .chat-box { height: 300px; overflow-y: auto; border: 1px solid rgba(163, 126, 44, 0.2); padding: 15px; margin: 15px 0; border-radius: 10px; display: flex; flex-direction: column; gap: 10px; }
         .msg { padding: 12px; border-radius: 10px; font-size: 14px; max-width: 85%; }
         .bot { background: #a37e2c; align-self: flex-start; }
         .user { background: rgba(255,255,255,0.1); align-self: flex-end; border: 1px solid #a37e2c; }
         .input-group { display: flex; gap: 10px; }
         input { flex: 1; padding: 12px; border-radius: 8px; border: 1px solid #a37e2c; background: transparent; color: white; outline: none; }
-        button { background: #a37e2c; border: none; padding: 10px 20px; color: white; border-radius: 8px; cursor: pointer; font-weight: bold; }
+        .btn-send { background: #a37e2c; border: none; padding: 10px 20px; color: white; border-radius: 8px; cursor: pointer; font-weight: bold; }
     </style>
 </head>
 <body>
 
 <div class="support-container">
-    <div id="statusText" style="text-align:center; color:#a37e2c; margin-bottom:10px;">Destek Talebi Oluştur</div>
+    <div id="statusText" style="text-align:center; color:#a37e2c; font-weight: bold; margin-bottom:10px;">Destek Talebi Oluştur</div>
     <div class="chat-box" id="chatContainer">
-        <div class="msg bot">Fortune Agency: Merhaba! Sorununuzu yazıp gönderin, ardından Google ile onaylayın.</div>
+        <div class="msg bot">Fortune Agency: Merhaba! Sorununuzu yazıp gönderin, ardından Google hesabınızı seçerek talebinizi onaylayın.</div>
     </div>
     <div class="input-group">
-        <input type="text" id="userMsg" placeholder="Mesajınız...">
-        <button onclick="handleSupport()">Gönder</button>
+        <input type="text" id="userMsg" placeholder="Mesajınız..." autocomplete="off">
+        <button class="btn-send" onclick="handleSupport()">Gönder</button>
     </div>
 </div>
 
@@ -41,34 +42,45 @@
         appId: "1:576445593804:web:5903e951157b38d8aaa69"
     };
 
-    firebase.initializeApp(firebaseConfig);
+    // Firebase'i başlat
+    if (!firebase.apps.length) {
+        firebase.initializeApp(firebaseConfig);
+    }
     const auth = firebase.auth();
     const db = firebase.firestore();
 
-    // SAYFA YÜKLENDİĞİNDE: Google'dan dönen kullanıcı var mı kontrol et
+    // SAYFA YÜKLENDİĞİNDE: Google'dan dönüş yapılıp yapılmadığını kontrol et
     auth.getRedirectResult().then((result) => {
-        if (result.user) {
-            // Yarım kalan mesajı yerel hafızadan (localStorage) al
+        if (result && result.user) {
             const savedMsg = localStorage.getItem('pendingMsg');
             if (savedMsg) {
                 saveTicketToFirebase(result.user, savedMsg);
-                localStorage.removeItem('pendingMsg'); // İşlem bitince sil
+                localStorage.removeItem('pendingMsg');
             }
         }
+    }).catch((error) => {
+        console.error("Yönlendirme hatası:", error);
     });
 
     async function handleSupport() {
-        const msg = document.getElementById('userMsg').value.trim();
-        if (!msg) return;
+        const msgInput = document.getElementById('userMsg');
+        const msg = msgInput.value.trim();
+        
+        if (!msg) {
+            alert("Lütfen bir mesaj yazın.");
+            return;
+        }
 
-        // Mesajı hafızaya kaydet (Giriş yapıp dönünce okuyacağız)
+        // Mesajı geçici olarak hafızaya al (Redirect'ten dönünce okumak için)
         localStorage.setItem('pendingMsg', msg);
 
+        // Kullanıcı zaten giriş yapmış mı?
         const user = auth.currentUser;
         if (user) {
             saveTicketToFirebase(user, msg);
+            msgInput.value = "";
         } else {
-            // AÇILIR PENCERE YERİNE YÖNLENDİRME (Redirect)
+            // Giriş yapmamışsa Google Redirect başlat
             const provider = new firebase.auth.GoogleAuthProvider();
             auth.signInWithRedirect(provider);
         }
@@ -79,19 +91,25 @@
             name: user.displayName,
             email: user.email,
             message: msg,
-            date: firebase.firestore.FieldValue.serverTimestamp()
+            status: "Açık",
+            timestamp: firebase.firestore.FieldValue.serverTimestamp()
         }).then(() => {
-            document.getElementById('statusText').innerText = "Talebiniz Alındı!";
-            const div = document.createElement('div');
-            div.className = "msg user";
-            div.innerText = msg;
-            document.getElementById('chatContainer').appendChild(div);
-            
-            const botDiv = document.createElement('div');
-            botDiv.className = "msg bot";
-            botDiv.innerText = "Teşekkürler " + user.displayName + ", talebiniz iletildi.";
-            document.getElementById('chatContainer').appendChild(botDiv);
+            document.getElementById('statusText').innerText = "Talebiniz İletildi!";
+            addMessageToBox(msg, 'user');
+            addMessageToBox("Teşekkürler " + user.displayName + ", talebiniz başarıyla kaydedildi. En kısa sürede e-posta adresinize dönüş yapılacaktır.", 'bot');
+        }).catch((err) => {
+            console.error("Firestore hatası:", err);
+            alert("Mesaj gönderilirken bir hata oluştu.");
         });
+    }
+
+    function addMessageToBox(text, type) {
+        const container = document.getElementById('chatContainer');
+        const div = document.createElement('div');
+        div.className = "msg " + type;
+        div.innerText = text;
+        container.appendChild(div);
+        container.scrollTop = container.scrollHeight;
     }
 </script>
 </body>
