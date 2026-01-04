@@ -2,40 +2,39 @@
 <html lang="tr">
 <head>
     <meta charset="UTF-8">
-    <title>Fortune Support | Canlı Destek</title>
+    <title>Destek Paneli</title>
     <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-auth-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore-compat.js"></script>
 
     <style>
-        body { background: #002b1a; color: white; font-family: 'Poppins', sans-serif; margin: 0; display: flex; justify-content: center; align-items: center; min-height: 100vh; }
-        .support-container { width: 90%; max-width: 500px; background: rgba(0, 77, 46, 0.95); padding: 30px; border-radius: 15px; border: 2px solid #a37e2c; box-shadow: 0 10px 40px rgba(0,0,0,0.5); }
-        .chat-box { height: 300px; overflow-y: auto; border: 1px solid rgba(163, 126, 44, 0.2); padding: 15px; margin: 15px 0; border-radius: 10px; display: flex; flex-direction: column; gap: 10px; background: rgba(0,0,0,0.2); }
-        .msg { padding: 12px; border-radius: 10px; font-size: 14px; max-width: 85%; line-height: 1.4; }
-        .bot { background: #a37e2c; align-self: flex-start; border-bottom-left-radius: 2px; }
-        .user { background: rgba(255,255,255,0.1); align-self: flex-end; border: 1px solid #a37e2c; border-bottom-right-radius: 2px; }
-        .input-group { display: flex; gap: 10px; }
-        input { flex: 1; padding: 12px; border-radius: 8px; border: 1px solid #a37e2c; background: transparent; color: white; outline: none; }
-        .btn-send { background: #a37e2c; border: none; padding: 10px 20px; color: white; border-radius: 8px; cursor: pointer; font-weight: bold; transition: 0.3s; }
-        .btn-send:hover { background: #8a6a25; }
-        #statusText { text-align: center; color: #a37e2c; font-weight: bold; margin-bottom: 10px; }
+        body { font-family: Arial, sans-serif; background-color: #f4f4f4; padding: 20px; }
+        .container { max-width: 500px; margin: auto; background: white; padding: 20px; border: 1px solid #ccc; border-radius: 5px; }
+        .hidden { display: none; }
+        input, textarea { width: 100%; padding: 10px; margin-top: 10px; box-sizing: border-box; }
+        button { width: 100%; padding: 10px; background: #4285F4; color: white; border: none; cursor: pointer; margin-top: 10px; font-weight: bold; }
+        button:hover { background: #357ae8; }
+        .user-info { font-size: 14px; margin-bottom: 10px; color: #555; }
     </style>
 </head>
 <body>
 
-<div class="support-container">
-    <div id="statusText">Fortune Destek Sistemi</div>
-    <div class="chat-box" id="chatContainer">
-        <div class="msg bot">Fortune Agency: Merhaba! Sorununuzu yazın ve Gönder'e basın. Google ile giriş yaptıktan sonra talebiniz bize ulaşacaktır.</div>
-    </div>
-    <div class="input-group">
-        <input type="text" id="userMsg" placeholder="Sorununuzu buraya yazın..." autocomplete="off">
-        <button class="btn-send" id="mainSendBtn">Gönder</button>
-    </div>
+<div class="container" id="loginArea">
+    <h3>Destek Sistemi Girişi</h3>
+    <p>Devam etmek için Google hesabınızla giriş yapın.</p>
+    <button onclick="login()">Google ile Giriş Yap</button>
+</div>
+
+<div class="container hidden" id="supportArea">
+    <div class="user-info" id="userInfo"></div>
+    <h3>Destek Talebi Oluştur</h3>
+    <textarea id="userMsg" rows="4" placeholder="Sorununuzu buraya yazın..."></textarea>
+    <button onclick="sendTicket()">Talebi Gönder</button>
+    <button onclick="logout()" style="background:#cc0000; margin-top: 5px;">Çıkış Yap</button>
 </div>
 
 <script>
-    // Sizin verdiğiniz yeni API anahtarı ile güncellendi
+    // Sizin API anahtarlarınız
     const firebaseConfig = {
         apiKey: "AIzaSyCiVeJn1mZs5-u8wPAt7sFNxbiQwsXGzkM",
         authDomain: "fortuneticket-59a4b.firebaseapp.com",
@@ -45,59 +44,54 @@
         appId: "1:576445593804:web:5903e951157b38d8aaa69"
     };
 
-    // Firebase'i Başlat
     firebase.initializeApp(firebaseConfig);
     const auth = firebase.auth();
     const db = firebase.firestore();
 
-    // Gönder Butonu İşlemi
-    document.getElementById('mainSendBtn').onclick = async function() {
-        const msgInput = document.getElementById('userMsg');
-        const message = msgInput.value.trim();
-        
-        if (!message) {
-            alert("Lütfen bir mesaj yazın.");
-            return;
+    // Giriş Durumu Kontrolü
+    auth.onAuthStateChanged(user => {
+        if (user) {
+            document.getElementById('loginArea').classList.add('hidden');
+            document.getElementById('supportArea').classList.remove('hidden');
+            document.getElementById('userInfo').innerText = "Giriş yapıldı: " + user.displayName + " (" + user.email + ")";
+        } else {
+            document.getElementById('loginArea').classList.remove('hidden');
+            document.getElementById('supportArea').classList.add('hidden');
         }
+    });
 
+    // Google Girişi
+    function login() {
         const provider = new firebase.auth.GoogleAuthProvider();
-
-        // Google ile Giriş Penceresini Aç
-        auth.signInWithPopup(provider).then((result) => {
-            const user = result.user;
-            
-            // Veritabanına Kaydet
-            db.collection("tickets").add({
-                name: user.displayName,
-                email: user.email,
-                message: message,
-                status: "Açık",
-                timestamp: firebase.firestore.FieldValue.serverTimestamp()
-            }).then(() => {
-                // Arayüzü Güncelle
-                addMessageToBox(message, 'user');
-                addMessageToBox("Talebiniz başarıyla alındı " + user.displayName + ". En kısa sürede dönüş yapacağız.", 'bot');
-                msgInput.value = "";
-                document.getElementById('statusText').innerText = "Talep İletildi ✅";
-            });
-
-        }).catch((error) => {
-            console.error("Giriş Hatası:", error);
-            if(error.code === "auth/popup-blocked") {
-                alert("Lütfen tarayıcınızın üst kısmından açılır pencerelere (Pop-up) izin verin.");
-            } else {
-                alert("Hata oluştu: " + error.message);
-            }
+        auth.signInWithPopup(provider).catch(error => {
+            alert("Hata: " + error.message);
         });
-    };
+    }
 
-    function addMessageToBox(text, type) {
-        const container = document.getElementById('chatContainer');
-        const div = document.createElement('div');
-        div.className = "msg " + type;
-        div.innerText = text;
-        container.appendChild(div);
-        container.scrollTop = container.scrollHeight;
+    // Çıkış
+    function logout() {
+        auth.signOut();
+    }
+
+    // Ticket Gönder
+    function sendTicket() {
+        const msg = document.getElementById('userMsg').value.trim();
+        const user = auth.currentUser;
+
+        if (!msg) return alert("Lütfen bir mesaj yazın.");
+
+        db.collection("tickets").add({
+            uid: user.uid,
+            name: user.displayName,
+            email: user.email,
+            message: msg,
+            timestamp: firebase.firestore.FieldValue.serverTimestamp()
+        }).then(() => {
+            alert("Talebiniz iletildi!");
+            document.getElementById('userMsg').value = "";
+        }).catch(err => {
+            alert("Veritabanı hatası: " + err.message);
+        });
     }
 </script>
 </body>
