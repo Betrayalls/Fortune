@@ -105,6 +105,26 @@
         <span class="bar-text">Discord</span>
     </a>
 </div>
+
+<div class="nav-menu" style="margin-top: auto;">
+    <a href="#" class="nav-link support-btn" onclick="openLoginModal()">
+        <span class="icon">🎧</span> CANLI DESTEK
+    </a>
+</div>
+
+<div id="loginModal" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeLoginModal()">&times;</span>
+        <div class="brand">FORTUNE</div>
+        <h3>Destek Sistemine Giriş</h3>
+        <p>Devam etmek için Google hesabınızla giriş yapın.</p>
+        <button class="google-login-btn" onclick="goToSupportPage()">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg" alt="Google">
+            Google ile Giriş Yap
+        </button>
+    </div>
+</div>
+        
     </div>
     </main>
 
@@ -164,6 +184,7 @@
 </script>
 </body>
 </html>
+
 
 
 
