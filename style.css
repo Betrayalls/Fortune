@@ -16,7 +16,7 @@ body {
     font-family: 'Poppins', sans-serif;
     display: flex;
     flex-direction: row;
-    background: #002b1a; /* Beyaz boşlukları önlemek için arka planı koyulaştırdık */
+    background: #002b1a;
     min-height: 100vh;
     overflow-x: hidden;
 }
@@ -172,79 +172,7 @@ body {
 .bar-item { color: white; font-size: 14px; display: flex; align-items: center; gap: 5px; transition: 0.3s; }
 .bar-item:hover { color: #a37e2c; }
 
-/* 7. DESTEK MODALI (GİRİŞ EKRANI) */
-.modal {
-    display: none;
-    position: fixed;
-    z-index: 20000;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0,0,0,0.85);
-    backdrop-filter: blur(8px);
-}
-
-.modal-content {
-    background: #004d2e;
-    margin: 10% auto;
-    padding: 40px;
-    border: 2px solid #a37e2c;
-    width: 90%;
-    max-width: 400px;
-    border-radius: 20px;
-    text-align: center;
-    color: white;
-    position: relative;
-    box-shadow: 0 0 30px rgba(0,0,0,0.5);
-}
-
-.google-login-btn {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 12px;
-    width: 100%;
-    padding: 14px;
-    background: white;
-    color: #333;
-    border: none;
-    border-radius: 10px;
-    font-weight: 600;
-    cursor: pointer;
-    margin-top: 25px;
-    transition: 0.3s;
-}
-
-.google-login-btn:hover { background: #f1f1f1; transform: translateY(-2px); }
-.google-login-btn img { width: 22px; }
-
-.close {
-    position: absolute;
-    right: 20px;
-    top: 15px;
-    font-size: 30px;
-    cursor: pointer;
-    color: #a37e2c;
-}
-
-/* 8. DESTEK BUTONU (SIDEBAR) */
-.support-btn-sidebar {
-    margin-top: 20px !important;
-    background: rgba(163, 126, 44, 0.1) !important;
-    border: 1px solid #a37e2c !important;
-    color: #a37e2c !important;
-    border-radius: 8px;
-    text-align: center;
-    justify-content: center;
-}
-
-.support-btn-sidebar:hover {
-    background: #a37e2c !important;
-    color: white !important;
-}
-
-/* 9. MOBİL UYUMLULUK */
+/* 7. MOBİL UYUMLULUK */
 @media (max-width: 992px) {
     body { flex-direction: column; }
     .side-nav {
@@ -273,7 +201,7 @@ body {
     .bar-item { flex-direction: column; }
 }
 
-/* 10. MASAÜSTÜ ÖZEL (PC) */
+/* 8. MASAÜSTÜ ÖZEL (PC) */
 @media (min-width: 993px) {
     .testimonial-grid {
         grid-template-columns: repeat(3, 1fr);
