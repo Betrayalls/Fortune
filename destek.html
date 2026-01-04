@@ -2,41 +2,42 @@
 <html lang="tr">
 <head>
     <meta charset="UTF-8">
-    <title>Fortune Support | Destek Paneli</title>
+    <title>Fortune Support | Canlı Destek</title>
     <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-auth-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore-compat.js"></script>
 
     <style>
-        body { background: #002b1a; color: white; font-family: 'Poppins', sans-serif; display: flex; justify-content: center; align-items: center; min-height: 100vh; margin: 0; }
-        .support-container { width: 90%; max-width: 550px; background: rgba(0, 77, 46, 0.8); padding: 30px; border-radius: 15px; border: 1px solid #a37e2c; }
-        .chat-box { height: 350px; overflow-y: auto; border: 1px solid rgba(163, 126, 44, 0.2); padding: 15px; margin-bottom: 20px; border-radius: 10px; display: flex; flex-direction: column; gap: 10px; }
-        .msg { padding: 12px; border-radius: 10px; font-size: 14px; line-height: 1.5; max-width: 85%; }
+        body { background: #002b1a; color: white; font-family: 'Poppins', sans-serif; margin: 0; display: flex; justify-content: center; align-items: center; min-height: 100vh; }
+        .support-container { width: 90%; max-width: 500px; background: rgba(0, 77, 46, 0.9); padding: 30px; border-radius: 15px; border: 1px solid #a37e2c; box-shadow: 0 10px 40px rgba(0,0,0,0.6); }
+        .chat-box { height: 300px; overflow-y: auto; border: 1px solid rgba(163, 126, 44, 0.2); padding: 15px; margin: 15px 0; border-radius: 10px; display: flex; flex-direction: column; gap: 10px; background: rgba(0,0,0,0.2); }
+        .msg { padding: 12px; border-radius: 10px; font-size: 14px; max-width: 85%; line-height: 1.4; }
         .bot { background: #a37e2c; align-self: flex-start; border-bottom-left-radius: 2px; }
         .user { background: rgba(255,255,255,0.1); align-self: flex-end; border: 1px solid #a37e2c; border-bottom-right-radius: 2px; }
         .input-group { display: flex; gap: 10px; }
         input { flex: 1; padding: 12px; border-radius: 8px; border: 1px solid #a37e2c; background: transparent; color: white; outline: none; }
-        button { background: #a37e2c; border: none; padding: 10px 25px; color: white; border-radius: 8px; cursor: pointer; font-weight: bold; }
-        .ticket-info { color: #a37e2c; font-size: 0.9rem; margin-bottom: 10px; text-align: center; }
+        button { background: #a37e2c; border: none; padding: 10px 20px; color: white; border-radius: 8px; cursor: pointer; font-weight: bold; transition: 0.3s; }
+        button:hover { background: #8a6a25; }
+        .ticket-no { text-align: center; color: #a37e2c; font-size: 0.8rem; margin-bottom: 10px; letter-spacing: 1px; }
     </style>
 </head>
 <body>
 
 <div class="support-container">
-    <div class="ticket-info" id="ticketId">Talep No: #Üretiliyor...</div>
+    <div class="ticket-no" id="tNo">Talep No: #Üretiliyor...</div>
     <div class="chat-box" id="chatContainer">
         <div class="msg bot">
-            <strong>Fortune Agency:</strong> Merhaba! Fortune Agency destek sistemine hoş geldiniz. Lütfen sorununuzu aşağıya yazın. Mesajınızı gönderdiğinizde Google hesabınızla giriş yapmanız istenecektir.
+            <strong>Fortune Agency:</strong> Merhaba! Lütfen sorununuzu aşağıya yazın. Mesajınızı gönderdiğinizde Google hesabınızla giriş yapmanız istenecektir.
         </div>
     </div>
     <div class="input-group">
-        <input type="text" id="userMessage" placeholder="Mesajınızı buraya yazın...">
-        <button onclick="handleAction()">Gönder</button>
+        <input type="text" id="userMsg" placeholder="Sorununuzu buraya yazın...">
+        <button onclick="processTicket()">Gönder</button>
     </div>
 </div>
 
 <script>
-    // Firebase Yapılandırman
+    // Firebase Config (Paylaştığın bilgilerle güncellendi)
     const firebaseConfig = {
         apiKey: "AIzaSyBc0BzhigcSpV0pCG7UB74UMipAq3zf-AQ",
         authDomain: "fortuneticket-59a4b.firebaseapp.com",
@@ -51,49 +52,49 @@
     const db = firebase.firestore();
 
     // Rastgele Ticket Numarası
-    const tId = "#" + Math.floor(100000 + Math.random() * 900000);
-    document.getElementById('ticketId').innerText = "Talep No: " + tId;
+    const currentTicketId = "#" + Math.floor(100000 + Math.random() * 900000);
+    document.getElementById('tNo').innerText = "Talep No: " + currentTicketId;
 
-    async function handleAction() {
-        const text = document.getElementById('userMessage').value.trim();
-        if (!text) return;
+    async function processTicket() {
+        const messageText = document.getElementById('userMsg').value.trim();
+        if (!messageText) return;
 
-        // Ekranda hemen mesajı göster
-        appendMessage(text, 'user');
-        document.getElementById('userMessage').value = "";
+        // 1. Önce mesajı ekrana ekle
+        addMessageToUI(messageText, 'user');
+        document.getElementById('userMsg').value = "";
 
-        // Eğer giriş yapmamışsa Google Login aç
-        if (!auth.currentUser) {
-            const provider = new firebase.auth.GoogleAuthProvider();
-            try {
+        // 2. Google Girişi (Sadece butona basıldığında tetiklenir, böylece tarayıcı engellemez)
+        try {
+            let user = auth.currentUser;
+            if (!user) {
+                const provider = new firebase.auth.GoogleAuthProvider();
                 const result = await auth.signInWithPopup(provider);
-                saveTicket(result.user, text);
-            } catch (error) {
-                alert("Google girişi engellendi veya iptal edildi. Lütfen tekrar deneyin.");
+                user = result.user;
             }
-        } else {
-            saveTicket(auth.currentUser, text);
+
+            // 3. Veritabanına (Firestore) Kaydet
+            await db.collection("tickets").add({
+                ticketId: currentTicketId,
+                userName: user.displayName,
+                userEmail: user.email,
+                userMessage: messageText,
+                status: "Açık",
+                createdAt: firebase.firestore.FieldValue.serverTimestamp()
+            });
+
+            addMessageToUI("Talebiniz başarıyla alındı. " + user.email + " adresine bilgilendirme yapılacaktır.", "bot");
+
+        } catch (error) {
+            console.error("Hata:", error);
+            alert("İşlem tamamlanamadı. Lütfen tarayıcınızın açılır pencerelere izin verdiğinden emin olun.");
         }
     }
 
-    function saveTicket(user, message) {
-        db.collection("tickets").add({
-            ticketNo: tId,
-            name: user.displayName,
-            email: user.email,
-            message: message,
-            status: "Beklemede",
-            date: firebase.firestore.FieldValue.serverTimestamp()
-        }).then(() => {
-            appendMessage("Talebiniz başarıyla iletildi. " + user.email + " adresine bilgilendirme yapılacaktır.", "bot");
-        });
-    }
-
-    function appendMessage(text, type) {
+    function addMessageToUI(text, type) {
+        const container = document.getElementById('chatContainer');
         const div = document.createElement('div');
         div.className = "msg " + type;
-        div.innerHTML = text;
-        const container = document.getElementById('chatContainer');
+        div.innerText = text;
         container.appendChild(div);
         container.scrollTop = container.scrollHeight;
     }
