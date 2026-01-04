@@ -405,3 +405,49 @@ body {
     cursor: pointer;
     color: #a37e2c;
 }
+
+/* Sol Menüdeki Destek Butonu Tasarımı */
+.support-btn-sidebar {
+    margin-top: 15px !important;
+    background: rgba(163, 126, 44, 0.15) !important; /* Hafif altın şeffaf arka plan */
+    border: 1px solid #a37e2c !important; /* Altın çerçeve */
+    color: #a37e2c !important; /* Altın yazı rengi */
+    padding: 12px 15px !important;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    font-size: 13px;
+    letter-spacing: 1px;
+}
+
+.support-btn-sidebar:hover {
+    background: #a37e2c !important;
+    color: #fff !important;
+    box-shadow: 0 0 15px rgba(163, 126, 44, 0.4);
+}
+
+.support-btn-sidebar .icon {
+    font-size: 18px;
+}
+
+/* Mobilde Menü Üstte Olduğu İçin Düzenleme */
+@media (max-width: 992px) {
+    .support-btn-sidebar {
+        margin-top: 10px !important;
+        justify-content: center;
+        width: 100%;
+    }
+}
+
+/* Alt taraftaki gereksiz beyazlığı ve kaymayı engeller */
+.main-wrapper {
+    overflow-x: hidden;
+}
+
+footer, .extra-space {
+    display: none !important;
+}
