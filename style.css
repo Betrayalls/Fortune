@@ -16,33 +16,32 @@ body {
     font-family: 'Poppins', sans-serif;
     display: flex;
     flex-direction: row;
-    background: #f5f5f5; /* Saf beyaz yerine yumuşak açık gri */
+    background: #808080; /* Normal Gri Arka Plan */
     min-height: 100vh;
     overflow-x: hidden;
-    color: #2c2c2c; /* Daha okunaklı koyu gri metinler */
+    color: #1a1a1a;
 }
 
 /* 2. MASAÜSTÜ YAN MENÜ (SIDEBAR) */
 .side-nav {
     width: 280px;
     height: 100vh;
-    background: #ffffff; /* Menü beyaz kalsın, içerikten ayrılsın */
+    background: #333333; /* Yan menü koyu gri/siyah tonda kalsın */
     position: fixed;
     left: 0;
     top: 0;
-    border-right: 4px solid #ffcc33; /* Canlı ve açık altın sarısı */
+    border-right: 4px solid #ffcc33; /* Açık Altın Sarısı */
     padding: 40px 20px;
     z-index: 9999;
     display: flex;
     flex-direction: column;
-    box-shadow: 2px 0 10px rgba(0,0,0,0.05);
 }
 
 .main-wrapper {
     margin-left: 280px;
     width: calc(100% - 280px);
     transition: all 0.3s ease;
-    background: #f5f5f5;
+    background: #808080; /* Ana içerik alanı normal gri */
     min-height: 100vh;
 }
 
@@ -56,7 +55,7 @@ body {
 }
 
 .brand {
-    color: #2c2c2c;
+    color: #ffffff;
     font-family: 'Playfair Display', serif;
     text-align: center;
     margin-bottom: 40px;
@@ -76,7 +75,7 @@ body {
 }
 
 .nav-link {
-    color: #666;
+    color: #cccccc;
     font-size: 16px;
     display: block;
     padding: 12px 15px;
@@ -105,38 +104,37 @@ body {
 }
 
 .hero-area {
-    /* Görsel üzerine açık gri bir katman */
-    background: linear-gradient(rgba(245,245,245,0.85), rgba(245,245,245,0.85)), url('img/arkahero.jpg');
+    /* Gri zemin üzerine koyulaştırılmış katman */
+    background: linear-gradient(rgba(128,128,128,0.8), rgba(128,128,128,0.8)), url('img/arkahero.jpg');
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
-    color: #2c2c2c;
+    color: #ffffff;
 }
 
-.hero-area h1 { font-size: 4rem; font-family: 'Playfair Display', serif; margin-bottom: 20px; }
+.hero-area h1 { font-size: 4rem; font-family: 'Playfair Display', serif; margin-bottom: 20px; text-shadow: 2px 2px 4px rgba(0,0,0,0.3); }
 .gold-text { color: #ffcc33; } 
 
 .hero-about-text {
     max-width: 700px;
     margin: 20px auto 30px;
-    padding: 15px;
-    background: #ffffff;
-    border-left: 3px solid #ffcc33;
-    border-right: 3px solid #ffcc33;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.03);
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid #ffcc33;
+    border-radius: 10px;
 }
 
 .hero-about-text p {
     font-size: 1.1rem !important;
     line-height: 1.6;
-    color: #444;
+    color: #ffffff;
     font-style: italic;
 }
 
 .section-title { font-size: 45px; font-family: 'Playfair Display', serif; color: #ffcc33; }
 .gold-divider { width: 100px; height: 4px; background: #ffcc33; margin: 20px auto 40px; }
 
-.dark-bg { background: #f5f5f5; color: #2c2c2c; } 
+.dark-bg { background: #808080; color: #ffffff; } 
 
 /* 5. KARTLAR VE GRID SİSTEMİ */
 .grid, .testimonial-grid { 
@@ -148,12 +146,12 @@ body {
 
 .card { 
     padding: 30px; 
-    background: #ffffff; 
+    background: #ffffff; /* Kartlar beyaz kalsın ki gri üzerinde patlasın */
     border-radius: 15px; 
     border-bottom: 6px solid #ffcc33; 
     transition: all 0.4s ease;
-    color: #2c2c2c;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.04);
+    color: #333333;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.15);
 }
 
 .card h3 { color: #ffcc33; margin-bottom: 10px; }
@@ -166,16 +164,15 @@ body {
     transform: translateX(-50%);
     display: flex;
     gap: 15px;
-    background: rgba(255, 255, 255, 0.95);
-    padding: 10px 25px;
+    background: #333333; /* Koyu gri bar */
+    padding: 12px 25px;
     border-radius: 50px;
-    border: 1px solid #ffcc33;
-    backdrop-filter: blur(8px);
+    border: 2px solid #ffcc33;
     z-index: 10000;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+    box-shadow: 0 4px 25px rgba(0,0,0,0.2);
 }
 
-.bar-item { color: #2c2c2c; font-size: 14px; display: flex; align-items: center; gap: 5px; transition: 0.3s; }
+.bar-item { color: #ffffff; font-size: 14px; display: flex; align-items: center; gap: 5px; transition: 0.3s; }
 .bar-item:hover { color: #ffcc33; }
 
 /* 7. MOBİL UYUMLULUK */
@@ -194,30 +191,17 @@ body {
     
     .testimonial-card {
         background: #ffffff !important;
-        color: #2c2c2c !important;
+        color: #333333 !important;
     }
-
-    .fixed-contact-bar {
-        width: 95%;
-        bottom: 15px;
-        padding: 8px 15px;
-    }
-    .bar-text { font-size: 11px; }
 }
 
-/* 8. MASAÜSTÜ ÖZEL (PC) */
-@media (min-width: 993px) {
-    .testimonial-grid {
-        grid-template-columns: repeat(3, 1fr);
-        gap: 30px;
-    }
-    .testimonial-card {
-        background: #ffffff !important;
-        border: 1px solid rgba(255, 204, 51, 0.2);
-        color: #2c2c2c !important;
-        min-height: 300px;
-        box-shadow: 0 8px 25px rgba(0,0,0,0.03);
-    }
-    .testimonial-card p { color: #444 !important; }
-    .testimonial-card .stars { color: #ffcc33; }
+/* 8. TESTIMONIAL ÖZEL */
+.testimonial-card {
+    background: #ffffff !important;
+    border: 1px solid #ffcc33;
+    color: #333333 !important;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
 }
+.testimonial-card strong { color: #ffcc33 !important; }
