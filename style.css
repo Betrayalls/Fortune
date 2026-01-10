@@ -334,3 +334,55 @@ body {
     margin-top: 10px;
     width: 100%;
 }
+
+/* 2. MASAÜSTÜ YAN MENÜ (SIDEBAR) - Ana Ayar */
+.side-nav {
+    width: 280px;
+    height: 100vh;
+    background: #006838; /* Menü kısmı için görseldeki yeşil */
+    position: fixed;
+    left: 0;
+    top: 0;
+    border-right: 4px solid #96CF24; /* Sağdaki açık yeşil şerit */
+    padding: 0; /* İç boşluğu sıfırladık ki logo tam yapışsın */
+    z-index: 9999;
+    display: flex;
+    flex-direction: column;
+}
+
+/* LOGO BÖLMESİ (Üst Kutu) - Hiç Yeşil Görünmeyecek Şekilde */
+.brand-box {
+    width: 100%; /* Sidebar genişliğine tam oturur */
+    height: auto;
+    margin: 0; /* Boşlukları tamamen kapattık */
+    padding: 0; /* İç boşluğu sıfırladık */
+    background: #F7F7F7; /* Logonun kendi arka plan rengi */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden; /* Taşmaları engeller */
+    border-bottom: 2px solid #96CF24; /* Alt kısımdan ayıran şık bir çizgi */
+}
+
+/* LOGO (GÖRSEL) AYARLARI */
+.nav-logo { 
+    width: 100%; /* Genişliği tamamen kaplaması için */
+    height: auto;
+    display: block;
+    object-fit: cover; /* Görseli kutuya tam yayar */
+    filter: none !important;
+}
+
+/* MENÜ LİNKLERİNİN DURUŞU */
+.nav-menu {
+    width: 100%;
+    padding: 20px; /* Menü linkleri köşelere yapışmasın diye burada padding veriyoruz */
+    display: flex;
+    flex-direction: column;
+}
+
+.nav-link {
+    color: #F7F7F7; /* */
+    padding: 12px 15px;
+    font-weight: 600;
+}
