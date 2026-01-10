@@ -300,3 +300,37 @@ body {
     display: flex;
     flex-direction: column;
 }
+
+/* LOGO BÖLMESİ (Tam genişlik ve ayrılmış kutu) */
+.brand-box {
+    width: calc(100% + 40px); /* Sidebar padding'lerini kapatmak için genişletildi */
+    margin: -40px -20px 30px -20px; /* Üst ve yanlardan köşelere sıfırla */
+    padding: 40px 20px; /* İçerideki görsel için güvenli boşluk */
+    background: rgba(255, 255, 255, 0.03); /* Çok hafif, asil bir doku */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* Mavi çizgiyle işaretlediğin bölmeyi ayıran alt sınır */
+    border-bottom: 1px solid rgba(150, 207, 36, 0.3); 
+    overflow: hidden;
+}
+
+/* GÖRSEL AYARLARI */
+.nav-logo { 
+    width: 100%; /* Kutunun genişliğine uyum sağla */
+    max-width: 180px; /* logonun çok devasa olmaması için bir limit (İhtiyaca göre artır) */
+    height: auto;
+    display: block;
+    filter: none !important; /* Renkler fotoğraftaki gibi kalsın */
+    transition: transform 0.3s ease;
+}
+
+.nav-logo:hover {
+    transform: scale(1.02); /* Çok hafif, kaliteli bir odaklanma etkisi */
+}
+
+/* MENÜNÜN YERLEŞİMİ (Üstten bağımsız olması için) */
+.nav-menu {
+    margin-top: 10px;
+    width: 100%;
+}
