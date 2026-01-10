@@ -1,102 +1,207 @@
-/* TÜM BOZUKLUKLARI TEMİZLE */
+/* 1. GENEL AYARLAR */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     text-decoration: none;
     list-style: none;
-    filter: none !important; /* Tüm o bulanıklıkları zorla kapatır */
-    backdrop-filter: none !important;
+}
+
+html {
+    scroll-behavior: auto !important;
+    overflow-x: hidden;
 }
 
 body {
     font-family: 'Poppins', sans-serif;
     display: flex;
-    background: #d1d1d1; /* TOK VE NET GRİ */
+    flex-direction: row;
+    background: #808080; /* Normal Gri Arka Plan */
+    min-height: 100vh;
+    overflow-x: hidden;
     color: #1a1a1a;
 }
 
-/* YAN MENÜ - ASİL DURUŞ */
+/* 2. MASAÜSTÜ YAN MENÜ (SIDEBAR) */
 .side-nav {
     width: 280px;
     height: 100vh;
-    background: #111111; /* SİYAH - GRİ DENGESİ */
+    background: #333333; /* Yan menü koyu gri/siyah tonda kalsın */
     position: fixed;
     left: 0;
     top: 0;
-    border-right: 4px solid #ffcc00; /* CANLI ALTIN */
+    border-right: 4px solid #ffcc33; /* Açık Altın Sarısı */
     padding: 40px 20px;
     z-index: 9999;
+    display: flex;
+    flex-direction: column;
 }
 
 .main-wrapper {
     margin-left: 280px;
     width: calc(100% - 280px);
-    background: #d1d1d1;
+    transition: all 0.3s ease;
+    background: #808080; /* Ana içerik alanı normal gri */
     min-height: 100vh;
 }
 
-/* MENÜ LİNKLERİ */
-.nav-link {
-    color: #ffffff !important;
-    font-size: 16px;
-    padding: 15px;
+/* 3. LOGO VE NAVİGASYON */
+.nav-logo { 
+    width: 50px;
+    height: auto;
     display: block;
+    margin: 0 auto 10px;
+    object-fit: contain;
+}
+
+.brand {
+    color: #ffffff;
+    font-family: 'Playfair Display', serif;
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.brand span {
+    display: block;
+    font-size: 20px;
+    letter-spacing: 2px;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+.nav-menu {
+    display: flex;
+    flex-direction: column;
+}
+
+.nav-link {
+    color: #cccccc;
+    font-size: 16px;
+    display: block;
+    padding: 12px 15px;
     transition: 0.3s;
     font-weight: 600;
 }
 
-.nav-link:hover {
-    color: #ffcc00 !important;
-    background: rgba(255, 204, 0, 0.1);
+.nav-link:hover { color: #ffcc33; padding-left: 10px; }
+
+.nav-link.active {
+    color: #ffcc33 !important;
+    background: rgba(255, 204, 51, 0.1);
+    border-left: 4px solid #ffcc33;
 }
 
-/* İÇERİK KARTLARI - CAM GİBİ NET */
-.card {
-    background: #ffffff !important;
-    padding: 30px;
+/* 4. İÇERİK ALANLARI (SECTIONS) */
+.section {
+    min-height: 100vh;
+    padding: 80px 5%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    width: 100%;
+}
+
+.hero-area {
+    /* Gri zemin üzerine koyulaştırılmış katman */
+    background: linear-gradient(rgba(128,128,128,0.8), rgba(128,128,128,0.8)), url('img/arkahero.jpg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    color: #ffffff;
+}
+
+.hero-area h1 { font-size: 4rem; font-family: 'Playfair Display', serif; margin-bottom: 20px; text-shadow: 2px 2px 4px rgba(0,0,0,0.3); }
+.gold-text { color: #ffcc33; } 
+
+.hero-about-text {
+    max-width: 700px;
+    margin: 20px auto 30px;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid #ffcc33;
     border-radius: 10px;
-    margin-bottom: 25px;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-    border-bottom: 5px solid #ffcc00;
-    color: #1a1a1a !important;
 }
 
-.section-title {
-    color: #111111;
-    font-size: 45px;
-    font-weight: 800;
-    margin-bottom: 20px;
+.hero-about-text p {
+    font-size: 1.1rem !important;
+    line-height: 1.6;
+    color: #ffffff;
+    font-style: italic;
 }
 
-.gold-text {
-    color: #b8860b !important; /* OKUNAKLI KOYU ALTIN */
+.section-title { font-size: 45px; font-family: 'Playfair Display', serif; color: #ffcc33; }
+.gold-divider { width: 100px; height: 4px; background: #ffcc33; margin: 20px auto 40px; }
+
+.dark-bg { background: #808080; color: #ffffff; } 
+
+/* 5. KARTLAR VE GRID SİSTEMİ */
+.grid, .testimonial-grid { 
+    display: grid; 
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); 
+    gap: 25px; 
+    width: 100%; 
 }
 
-/* ALT BİLGİ ÇUBUĞU */
+.card { 
+    padding: 30px; 
+    background: #ffffff; /* Kartlar beyaz kalsın ki gri üzerinde patlasın */
+    border-radius: 15px; 
+    border-bottom: 6px solid #ffcc33; 
+    transition: all 0.4s ease;
+    color: #333333;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+}
+
+.card h3 { color: #ffcc33; margin-bottom: 10px; }
+
+/* 6. SABİT İLETİŞİM BARI */
 .fixed-contact-bar {
     position: fixed;
     bottom: 20px;
-    left: 55%;
+    left: 50%;
     transform: translateX(-50%);
-    background: #111111;
-    padding: 12px 30px;
-    border-radius: 50px;
-    border: 2px solid #ffcc00;
     display: flex;
-    gap: 20px;
+    gap: 15px;
+    background: #333333; /* Koyu gri bar */
+    padding: 12px 25px;
+    border-radius: 50px;
+    border: 2px solid #ffcc33;
     z-index: 10000;
+    box-shadow: 0 4px 25px rgba(0,0,0,0.2);
 }
 
-.bar-item {
-    color: #ffffff !important;
-    font-weight: bold;
-}
+.bar-item { color: #ffffff; font-size: 14px; display: flex; align-items: center; gap: 5px; transition: 0.3s; }
+.bar-item:hover { color: #ffcc33; }
 
-/* MOBİLDE BOZULMASIN */
+/* 7. MOBİL UYUMLULUK */
 @media (max-width: 992px) {
     body { flex-direction: column; }
-    .side-nav { width: 100%; height: auto; position: relative; border-right: none; border-bottom: 4px solid #ffcc00; }
+    .side-nav {
+        width: 100%;
+        height: auto;
+        position: relative;
+        padding: 20px;
+        border-right: none;
+        border-bottom: 3px solid #ffcc33;
+    }
     .main-wrapper { margin-left: 0; width: 100%; }
-    .fixed-contact-bar { width: 90%; left: 50%; bottom: 10px; }
+    .hero-area h1 { font-size: 2.5rem; }
+    
+    .testimonial-card {
+        background: #ffffff !important;
+        color: #333333 !important;
+    }
 }
+
+/* 8. TESTIMONIAL ÖZEL */
+.testimonial-card {
+    background: #ffffff !important;
+    border: 1px solid #ffcc33;
+    color: #333333 !important;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+}
+.testimonial-card strong { color: #ffcc33 !important; }
