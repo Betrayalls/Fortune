@@ -11,115 +11,93 @@ body {
     font-family: 'Poppins', sans-serif;
     display: flex;
     flex-direction: row;
-    background: #f8f9fa; /* İnaktif durmayan, temiz ve canlı bir açık zemin */
+    background: #e0e0e0; /* Tam kararında, net bir gri arka plan */
     min-height: 100vh;
-    color: #212529;
+    color: #1a1a1a;
 }
 
-/* 2. MASAÜSTÜ YAN MENÜ (SIDEBAR) */
+/* 2. SIDEBAR (YAN MENÜ) */
 .side-nav {
     width: 280px;
     height: 100vh;
-    background: #1a1c1e; /* Çok koyu, asil bir antrasit */
+    background: #222222; /* Koyu antrasit, ciddi duruş */
     position: fixed;
     left: 0;
     top: 0;
-    border-right: 4px solid #e6b800; /* Daha tok ve canlı bir altın */
+    border-right: 4px solid #ffcc00; /* Parlak Altın Sarısı */
     padding: 40px 20px;
     z-index: 9999;
-    display: flex;
-    flex-direction: column;
 }
 
 .main-wrapper {
     margin-left: 280px;
     width: calc(100% - 280px);
-    background: #f8f9fa;
+    background: #e0e0e0;
     min-height: 100vh;
 }
 
-/* 3. LOGO VE NAVİGASYON */
-.brand {
-    color: #ffffff;
-    font-family: 'Playfair Display', serif;
-    text-align: center;
-    margin-bottom: 40px;
-}
-
+/* 3. MENÜ LİNKLERİ */
 .nav-link {
-    color: #adb5bd;
+    color: #ffffff;
     font-size: 16px;
     display: block;
     padding: 15px;
-    transition: 0.4s;
-    font-weight: 500;
-    border-radius: 8px;
+    margin-bottom: 5px;
+    transition: 0.3s;
+    border-radius: 5px;
 }
 
-.nav-link:hover, .nav-link.active { 
-    color: #e6b800; 
-    background: rgba(230, 184, 0, 0.1);
-    padding-left: 20px;
+.nav-link:hover, .nav-link.active {
+    background: rgba(255, 204, 0, 0.1);
+    color: #ffcc00;
 }
 
-/* 4. HERO ALANI */
-.hero-area {
-    /* Hafif puslu, premium bir görünüm */
-    background: linear-gradient(rgba(248,249,250,0.8), rgba(248,249,250,0.9)), url('img/arkahero.jpg');
-    background-size: cover;
-    background-attachment: fixed;
-    color: #1a1c1e;
+/* 4. İÇERİK KARTLARI */
+.card {
+    background: #ffffff; /* Gri zeminde parlayan beyaz kartlar */
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    border-bottom: 5px solid #ffcc00;
+    margin-bottom: 20px;
 }
 
-.gold-text { color: #b8860b; } /* Başlıklarda daha okunaklı, koyu altın */
-
-.hero-about-text {
-    background: #ffffff;
-    border: 1px solid rgba(184, 134, 11, 0.3);
-    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
-    border-radius: 15px;
-    padding: 25px;
+.section-title {
+    color: #222222;
+    font-size: 40px;
+    margin-bottom: 10px;
 }
 
-/* 5. KARTLAR (GRID) */
-.card { 
-    padding: 35px; 
-    background: #ffffff; 
-    border-radius: 20px; 
-    border: 1px solid rgba(0,0,0,0.03);
-    border-bottom: 5px solid #e6b800; 
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+.gold-text {
+    color: #cc9900; /* Metinlerde daha okunaklı altın rengi */
 }
 
-.card:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 15px 40px rgba(0,0,0,0.1);
-}
-
-.card h3 { color: #b8860b; margin-bottom: 12px; }
-
-/* 6. SABİT İLETİŞİM BARI */
+/* 5. ALT İLETİŞİM BARI */
 .fixed-contact-bar {
     position: fixed;
     bottom: 25px;
-    left: 55%; /* Sidebar'a göre ortalandı */
+    left: 55%;
     transform: translateX(-50%);
-    background: #1a1c1e;
+    background: #222222;
     padding: 12px 30px;
     border-radius: 50px;
-    border: 1px solid #e6b800;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+    border: 2px solid #ffcc00;
+    display: flex;
+    gap: 20px;
+    z-index: 10000;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.3);
 }
 
-.bar-item { color: #ffffff; font-weight: 500; }
-.bar-item:hover { color: #e6b800; }
+.bar-item {
+    color: #ffffff;
+    font-size: 14px;
+    font-weight: 600;
+}
 
-/* 7. TESTIMONIALS */
-.testimonial-card {
-    background: #ffffff !important;
-    border: none;
-    box-shadow: 0 8px 20px rgba(0,0,0,0.06);
-    padding: 30px;
-    border-radius: 15px;
+/* 6. MOBİL AYAR */
+@media (max-width: 992px) {
+    body { flex-direction: column; }
+    .side-nav { width: 100%; height: auto; position: relative; border-right: none; border-bottom: 4px solid #ffcc00; }
+    .main-wrapper { margin-left: 0; width: 100%; }
+    .fixed-contact-bar { width: 90%; left: 50%; }
 }
