@@ -16,33 +16,31 @@ body {
     font-family: 'Poppins', sans-serif;
     display: flex;
     flex-direction: row;
-    background: #f5f5f5; /* Saf beyaz yerine yumuşak açık gri */
+    background: #002b1a;
     min-height: 100vh;
     overflow-x: hidden;
-    color: #2c2c2c; /* Daha okunaklı koyu gri metinler */
 }
 
 /* 2. MASAÜSTÜ YAN MENÜ (SIDEBAR) */
 .side-nav {
     width: 280px;
     height: 100vh;
-    background: #ffffff; /* Menü beyaz kalsın, içerikten ayrılsın */
+    background: #004d2e;
     position: fixed;
     left: 0;
     top: 0;
-    border-right: 4px solid #ffcc33; /* Canlı ve açık altın sarısı */
+    border-right: 4px solid #a37e2c;
     padding: 40px 20px;
     z-index: 9999;
     display: flex;
     flex-direction: column;
-    box-shadow: 2px 0 10px rgba(0,0,0,0.05);
 }
 
 .main-wrapper {
     margin-left: 280px;
     width: calc(100% - 280px);
     transition: all 0.3s ease;
-    background: #f5f5f5;
+    background: #002b1a;
     min-height: 100vh;
 }
 
@@ -56,7 +54,7 @@ body {
 }
 
 .brand {
-    color: #2c2c2c;
+    color: #fff;
     font-family: 'Playfair Display', serif;
     text-align: center;
     margin-bottom: 40px;
@@ -76,7 +74,7 @@ body {
 }
 
 .nav-link {
-    color: #666;
+    color: #fff;
     font-size: 16px;
     display: block;
     padding: 12px 15px;
@@ -84,12 +82,12 @@ body {
     font-weight: 600;
 }
 
-.nav-link:hover { color: #ffcc33; padding-left: 10px; }
+.nav-link:hover { color: #a37e2c; padding-left: 10px; }
 
 .nav-link.active {
-    color: #ffcc33 !important;
-    background: rgba(255, 204, 51, 0.1);
-    border-left: 4px solid #ffcc33;
+    color: #a37e2c !important;
+    background: rgba(255, 255, 255, 0.1);
+    border-left: 4px solid #a37e2c;
 }
 
 /* 4. İÇERİK ALANLARI (SECTIONS) */
@@ -105,38 +103,36 @@ body {
 }
 
 .hero-area {
-    /* Görsel üzerine açık gri bir katman */
-    background: linear-gradient(rgba(245,245,245,0.85), rgba(245,245,245,0.85)), url('img/arkahero.jpg');
+    background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('img/arkahero.jpg');
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
-    color: #2c2c2c;
+    color: white;
 }
 
 .hero-area h1 { font-size: 4rem; font-family: 'Playfair Display', serif; margin-bottom: 20px; }
-.gold-text { color: #ffcc33; } 
+.gold-text { color: #a37e2c; }
 
 .hero-about-text {
     max-width: 700px;
     margin: 20px auto 30px;
     padding: 15px;
-    background: #ffffff;
-    border-left: 3px solid #ffcc33;
-    border-right: 3px solid #ffcc33;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.03);
+    background: rgba(163, 126, 44, 0.1);
+    border-left: 3px solid #a37e2c;
+    border-right: 3px solid #a37e2c;
 }
 
 .hero-about-text p {
     font-size: 1.1rem !important;
     line-height: 1.6;
-    color: #444;
+    color: #eee;
     font-style: italic;
 }
 
-.section-title { font-size: 45px; font-family: 'Playfair Display', serif; color: #ffcc33; }
-.gold-divider { width: 100px; height: 4px; background: #ffcc33; margin: 20px auto 40px; }
+.section-title { font-size: 45px; font-family: 'Playfair Display', serif; color: #a37e2c; }
+.gold-divider { width: 100px; height: 4px; background: #a37e2c; margin: 20px auto 40px; }
 
-.dark-bg { background: #f5f5f5; color: #2c2c2c; } 
+.dark-bg { background: #002b1a; color: white; }
 
 /* 5. KARTLAR VE GRID SİSTEMİ */
 .grid, .testimonial-grid { 
@@ -148,15 +144,14 @@ body {
 
 .card { 
     padding: 30px; 
-    background: #ffffff; 
+    background: rgba(255,255,255,0.05); 
     border-radius: 15px; 
-    border-bottom: 6px solid #ffcc33; 
+    border-bottom: 6px solid #a37e2c; 
     transition: all 0.4s ease;
-    color: #2c2c2c;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.04);
+    color: white;
 }
 
-.card h3 { color: #ffcc33; margin-bottom: 10px; }
+.card h3 { color: #a37e2c; margin-bottom: 10px; }
 
 /* 6. SABİT İLETİŞİM BARI */
 .fixed-contact-bar {
@@ -166,17 +161,16 @@ body {
     transform: translateX(-50%);
     display: flex;
     gap: 15px;
-    background: rgba(255, 255, 255, 0.95);
-    padding: 10px 25px;
+    background: rgba(0, 77, 46, 0.9);
+    padding: 10px 20px;
     border-radius: 50px;
-    border: 1px solid #ffcc33;
+    border: 1px solid #a37e2c;
     backdrop-filter: blur(8px);
     z-index: 10000;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
 }
 
-.bar-item { color: #2c2c2c; font-size: 14px; display: flex; align-items: center; gap: 5px; transition: 0.3s; }
-.bar-item:hover { color: #ffcc33; }
+.bar-item { color: white; font-size: 14px; display: flex; align-items: center; gap: 5px; transition: 0.3s; }
+.bar-item:hover { color: #a37e2c; }
 
 /* 7. MOBİL UYUMLULUK */
 @media (max-width: 992px) {
@@ -187,22 +181,24 @@ body {
         position: relative;
         padding: 20px;
         border-right: none;
-        border-bottom: 3px solid #ffcc33;
+        border-bottom: 3px solid #a37e2c;
     }
     .main-wrapper { margin-left: 0; width: 100%; }
     .hero-area h1 { font-size: 2.5rem; }
     
     .testimonial-card {
-        background: #ffffff !important;
-        color: #2c2c2c !important;
+        background: #fff !important;
+        color: #111 !important;
     }
+    .testimonial-card p, .testimonial-card strong { color: #111 !important; }
 
     .fixed-contact-bar {
-        width: 95%;
-        bottom: 15px;
-        padding: 8px 15px;
+        width: 90%;
+        bottom: 10px;
+        gap: 10px;
     }
-    .bar-text { font-size: 11px; }
+    .bar-text { font-size: 10px; }
+    .bar-item { flex-direction: column; }
 }
 
 /* 8. MASAÜSTÜ ÖZEL (PC) */
@@ -212,12 +208,12 @@ body {
         gap: 30px;
     }
     .testimonial-card {
-        background: #ffffff !important;
-        border: 1px solid rgba(255, 204, 51, 0.2);
-        color: #2c2c2c !important;
+        background: rgba(255,255,255,0.03) !important;
+        border: 1px solid rgba(163,126,44,0.2);
+        color: white !important;
         min-height: 300px;
-        box-shadow: 0 8px 25px rgba(0,0,0,0.03);
     }
-    .testimonial-card p { color: #444 !important; }
-    .testimonial-card .stars { color: #ffcc33; }
+    .testimonial-card p { color: white !important; line-height: 1.6; }
+    .testimonial-card .stars { color: #a37e2c; font-size: 20px; margin-bottom: 15px; }
+    .testimonial-card strong { color: #a37e2c !important; display: block; margin-top: 10px; }
 }
