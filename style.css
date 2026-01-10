@@ -1,30 +1,30 @@
-/* 1. GENEL AYARLAR */
+/* TÜM BOZUKLUKLARI TEMİZLE */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     text-decoration: none;
     list-style: none;
+    filter: none !important; /* Tüm o bulanıklıkları zorla kapatır */
+    backdrop-filter: none !important;
 }
 
 body {
     font-family: 'Poppins', sans-serif;
     display: flex;
-    flex-direction: row;
-    background: #e0e0e0; /* Tam kararında, net bir gri arka plan */
-    min-height: 100vh;
+    background: #d1d1d1; /* TOK VE NET GRİ */
     color: #1a1a1a;
 }
 
-/* 2. SIDEBAR (YAN MENÜ) */
+/* YAN MENÜ - ASİL DURUŞ */
 .side-nav {
     width: 280px;
     height: 100vh;
-    background: #222222; /* Koyu antrasit, ciddi duruş */
+    background: #111111; /* SİYAH - GRİ DENGESİ */
     position: fixed;
     left: 0;
     top: 0;
-    border-right: 4px solid #ffcc00; /* Parlak Altın Sarısı */
+    border-right: 4px solid #ffcc00; /* CANLI ALTIN */
     padding: 40px 20px;
     z-index: 9999;
 }
@@ -32,72 +32,71 @@ body {
 .main-wrapper {
     margin-left: 280px;
     width: calc(100% - 280px);
-    background: #e0e0e0;
+    background: #d1d1d1;
     min-height: 100vh;
 }
 
-/* 3. MENÜ LİNKLERİ */
+/* MENÜ LİNKLERİ */
 .nav-link {
-    color: #ffffff;
+    color: #ffffff !important;
     font-size: 16px;
-    display: block;
     padding: 15px;
-    margin-bottom: 5px;
+    display: block;
     transition: 0.3s;
-    border-radius: 5px;
+    font-weight: 600;
 }
 
-.nav-link:hover, .nav-link.active {
+.nav-link:hover {
+    color: #ffcc00 !important;
     background: rgba(255, 204, 0, 0.1);
-    color: #ffcc00;
 }
 
-/* 4. İÇERİK KARTLARI */
+/* İÇERİK KARTLARI - CAM GİBİ NET */
 .card {
-    background: #ffffff; /* Gri zeminde parlayan beyaz kartlar */
+    background: #ffffff !important;
     padding: 30px;
-    border-radius: 12px;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    border-radius: 10px;
+    margin-bottom: 25px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
     border-bottom: 5px solid #ffcc00;
-    margin-bottom: 20px;
+    color: #1a1a1a !important;
 }
 
 .section-title {
-    color: #222222;
-    font-size: 40px;
-    margin-bottom: 10px;
+    color: #111111;
+    font-size: 45px;
+    font-weight: 800;
+    margin-bottom: 20px;
 }
 
 .gold-text {
-    color: #cc9900; /* Metinlerde daha okunaklı altın rengi */
+    color: #b8860b !important; /* OKUNAKLI KOYU ALTIN */
 }
 
-/* 5. ALT İLETİŞİM BARI */
+/* ALT BİLGİ ÇUBUĞU */
 .fixed-contact-bar {
     position: fixed;
-    bottom: 25px;
+    bottom: 20px;
     left: 55%;
     transform: translateX(-50%);
-    background: #222222;
+    background: #111111;
     padding: 12px 30px;
     border-radius: 50px;
     border: 2px solid #ffcc00;
     display: flex;
     gap: 20px;
     z-index: 10000;
-    box-shadow: 0 5px 20px rgba(0,0,0,0.3);
 }
 
 .bar-item {
-    color: #ffffff;
-    font-size: 14px;
-    font-weight: 600;
+    color: #ffffff !important;
+    font-weight: bold;
 }
 
-/* 6. MOBİL AYAR */
+/* MOBİLDE BOZULMASIN */
 @media (max-width: 992px) {
     body { flex-direction: column; }
     .side-nav { width: 100%; height: auto; position: relative; border-right: none; border-bottom: 4px solid #ffcc00; }
     .main-wrapper { margin-left: 0; width: 100%; }
-    .fixed-contact-bar { width: 90%; left: 50%; }
+    .fixed-contact-bar { width: 90%; left: 50%; bottom: 10px; }
 }
