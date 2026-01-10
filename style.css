@@ -386,3 +386,51 @@ body {
     padding: 12px 15px;
     font-weight: 600;
 }
+
+/* 1. SIDEBAR ANA AYARI (Boşlukları Sıfırladık) */
+.side-nav {
+    width: 280px;
+    height: 100vh;
+    background: #006838; /* Menü kısmı yeşil kalmaya devam eder */
+    position: fixed;
+    left: 0;
+    top: 0;
+    padding: 0 !important; /* Sidebar'ın tepesinde/yanında yeşil boşluk kalmasını engeller */
+    border-right: 4px solid #96CF24;
+    z-index: 9999;
+    display: flex;
+    flex-direction: column;
+}
+
+/* 2. LOGO KUTUSU (Üst Bölme - Tam Genişlik) */
+.brand-box {
+    width: 100%; /* Sidebar genişliğine tam oturur */
+    margin: 0;
+    padding: 0;
+    line-height: 0; /* Görselin altında boşluk oluşmasını önler */
+    display: block; 
+}
+
+/* 3. LOGO GÖRSELİ (Tam Yayılım) */
+.nav-logo { 
+    width: 100%; /* Sağdan sola tek bir boşluk kalmadan yayılır */
+    height: auto;
+    display: block;
+    filter: none !important; /* Logonun kendi orijinal renkleri neyse o görünür */
+}
+
+/* 4. MENÜ LİNKLERİ (Aşağısı Olduğu Gibi Durur) */
+.nav-menu {
+    width: 100%;
+    padding: 20px; /* Sadece yazıların olduğu kısım içeri çekilir, logo etkilenmez */
+    display: flex;
+    flex-direction: column;
+}
+
+.nav-link {
+    color: #F7F7F7;
+    font-size: 16px;
+    display: block;
+    padding: 12px 15px;
+    font-weight: 600;
+}
