@@ -229,3 +229,46 @@ body {
 }
 .testimonial-card .stars { color: #96CF24; }
 .testimonial-card strong { color: #96CF24 !important; }
+
+/* LOGO KUTUSU (Üst Bölme) */
+.brand-box {
+    background: rgba(255, 255, 255, 0.05); /* Çok hafif şeffaf beyaz, bölmeyi belli eder */
+    padding: 30px 20px;
+    margin: -40px -20px 30px -20px; /* Sidebar padding'lerini sıfırlayıp tam oturmasını sağlar */
+    border-bottom: 2px solid rgba(150, 207, 36, 0.3); /* Menüyle arasına ince yeşil çizgi */
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* LOGO AYARLARI */
+.nav-logo { 
+    width: 80px; /* Logonun boyutu */
+    height: auto;
+    margin-bottom: 15px;
+    filter: none !important; /* Renklerin bozulmasını engeller, orijinal kalsın */
+    transition: transform 0.3s ease;
+}
+
+.nav-logo:hover {
+    transform: scale(1.05); /* Üzerine gelince hafif büyüme efekti */
+}
+
+/* MARKA YAZISI */
+.brand-text {
+    color: #96CF24; /* Görseldeki açık yeşil tonun */
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+}
+
+/* MENÜNÜN KONUMU (Aşağıyı etkilememesi için) */
+.nav-menu {
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
