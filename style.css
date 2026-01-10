@@ -16,23 +16,23 @@ body {
     font-family: 'Poppins', sans-serif;
     display: flex;
     flex-direction: row;
-    /* YENİLİKÇİ RENK: Koyu Kömür / Derin Uzay Mavisi */
-    background: #020617; 
+    /* NARDO GRİ - KOYU TON (Zemin) */
+    background: #1c1c1c; 
     min-height: 100vh;
     overflow-x: hidden;
-    color: #f8fafc;
+    color: #f1f5f9;
 }
 
 /* 2. MASAÜSTÜ YAN MENÜ (SIDEBAR) */
 .side-nav {
     width: 280px;
     height: 100vh;
-    /* YENİLİKÇİ RENK: Cam efekti hissi veren koyu panel */
-    background: #0f172a; 
+    /* NARDO GRİ - ORTA TON (Panel) */
+    background: #2a2a2a; 
     position: fixed;
     left: 0;
     top: 0;
-    /* YENİLİKÇİ RENK: Neon Amber (Göz alıcı ama modern altın) */
+    /* NARDO İLE UYUMLU ALTIN (Amber) */
     border-right: 4px solid #f59e0b; 
     padding: 40px 20px;
     z-index: 9999;
@@ -44,7 +44,7 @@ body {
     margin-left: 280px;
     width: calc(100% - 280px);
     transition: all 0.3s ease;
-    background: #020617; 
+    background: #1c1c1c; 
     min-height: 100vh;
 }
 
@@ -70,7 +70,7 @@ body {
     letter-spacing: 2px;
     font-weight: 700;
     text-transform: uppercase;
-    color: #f59e0b; /* Neon amber tonu */
+    color: #f59e0b;
 }
 
 .nav-menu {
@@ -79,7 +79,7 @@ body {
 }
 
 .nav-link {
-    color: #94a3b8;
+    color: #94a3b8; /* Nardo gri ile uyumlu açık gri metin */
     font-size: 16px;
     display: block;
     padding: 12px 15px;
@@ -108,8 +108,8 @@ body {
 }
 
 .hero-area {
-    /* Gradient geçişi yenilikçi bir derinlik katar */
-    background: radial-gradient(circle at center, rgba(15, 23, 42, 0.7), rgba(2, 6, 23, 0.95)), url('img/arkahero.jpg');
+    /* Nardo Gri üzerine şık bir gradient */
+    background: radial-gradient(circle at center, rgba(42, 42, 42, 0.7), rgba(28, 28, 28, 0.95)), url('img/arkahero.jpg');
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
@@ -126,7 +126,7 @@ body {
     background: rgba(245, 158, 11, 0.05);
     border-left: 3px solid #f59e0b;
     border-right: 3px solid #f59e0b;
-    backdrop-filter: blur(5px); /* Modern cam efekti */
+    backdrop-filter: blur(5px);
 }
 
 .hero-about-text p {
@@ -139,7 +139,7 @@ body {
 .section-title { font-size: 45px; font-family: 'Playfair Display', serif; color: #f59e0b; }
 .gold-divider { width: 100px; height: 4px; background: #f59e0b; margin: 20px auto 40px; }
 
-.dark-bg { background: #020617; color: white; }
+.dark-bg { background: #1c1c1c; color: white; }
 
 /* 5. KARTLAR VE GRID SİSTEMİ */
 .grid, .testimonial-grid { 
@@ -151,15 +151,15 @@ body {
 
 .card { 
     padding: 30px; 
-    background: #1e293b; /* Modern koyu mavi-gri */
+    background: #2a2a2a; /* Nardo Gri - Kart yapısı */
     border-radius: 15px; 
     border-bottom: 6px solid #f59e0b; 
-    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); /* Yenilikçi animasyon */
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     color: white;
-    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
 }
 
-.card:hover { transform: translateY(-8px); box-shadow: 0 20px 25px -5px rgba(245, 158, 11, 0.1); }
+.card:hover { transform: translateY(-8px); box-shadow: 0 15px 30px rgba(245, 158, 11, 0.15); }
 .card h3 { color: #f59e0b; margin-bottom: 10px; }
 
 /* 6. SABİT İLETİŞİM BARI */
@@ -170,11 +170,11 @@ body {
     transform: translateX(-50%);
     display: flex;
     gap: 15px;
-    background: rgba(15, 23, 42, 0.8);
+    background: rgba(42, 42, 42, 0.9);
     padding: 10px 20px;
     border-radius: 50px;
     border: 1px solid rgba(245, 158, 11, 0.5);
-    backdrop-filter: blur(12px); /* Yenilikçi cam efekti */
+    backdrop-filter: blur(12px);
     z-index: 10000;
 }
 
@@ -195,7 +195,7 @@ body {
     .main-wrapper { margin-left: 0; width: 100%; }
     
     .testimonial-card {
-        background: #1e293b !important;
+        background: #2a2a2a !important;
         color: #f8fafc !important;
     }
 }
@@ -203,10 +203,9 @@ body {
 /* 8. MASAÜSTÜ ÖZEL (PC) */
 @media (min-width: 993px) {
     .testimonial-card {
-        background: rgba(30, 41, 59, 0.6) !important;
+        background: rgba(42, 42, 42, 0.6) !important;
         border: 1px solid rgba(245, 158, 11, 0.3);
         color: white !important;
-        backdrop-filter: blur(10px);
     }
     .testimonial-card .stars { color: #f59e0b; }
     .testimonial-card strong { color: #f59e0b !important; }
