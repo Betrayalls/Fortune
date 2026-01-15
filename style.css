@@ -22,11 +22,11 @@ body {
     color: #F7F7F7;
 }
 
-/* 2. MASAÜSTÜ YAN MENÜ (SIDEBAR) */
+/* 2. MASAÜSTÜ YAN MENÜ (SIDEBAR) - RENK GÜNCELLENDİ */
 .side-nav {
     width: 280px;
     height: 100vh;
-    background: #006838; 
+    background: #0d0d0d; /* YEŞİL GİTTİ, 98e3ac GÖRSELİNDEKİ SİYAH TON GELDİ */
     position: fixed;
     left: 0;
     top: 0;
@@ -81,7 +81,7 @@ body {
 
 .nav-link.active {
     color: #96CF24 !important;
-    background: rgba(150, 207, 36, 0.15);
+    background: rgba(150, 207, 36, 0.1); /* Hafif vurgu */
     border-left: 4px solid #96CF24;
     opacity: 1;
 }
@@ -159,12 +159,11 @@ body {
     width: 100%; 
 }
 
-/* !!! BURASI ÖNEMLİ: HEM KARTLARI HEM REFERANSLARI TEK ÇATI ALTINA ALDIM !!! */
 .card, .testimonial-card { 
     padding: 30px !important; 
-    background: #2a2a2a !important; /* NARDO GRİ KART */
+    background: #2a2a2a !important; 
     border-radius: 15px !important; 
-    border-bottom: 6px solid #006838 !important; /* KOYU YEŞİL ALT ÇİZGİ */
+    border-bottom: 6px solid #006838 !important; 
     border-top: none !important;
     border-left: none !important;
     border-right: none !important;
@@ -176,7 +175,7 @@ body {
 
 .card:hover, .testimonial-card:hover { 
     transform: translateY(-8px) !important; 
-    border-bottom-color: #96CF24 !important; /* HOVERDA AÇIK YEŞİL */
+    border-bottom-color: #96CF24 !important; 
     box-shadow: 0 10px 20px rgba(0,0,0,0.3) !important;
 }
 
@@ -198,7 +197,7 @@ body {
     transform: translateX(-50%);
     display: flex;
     gap: 15px;
-    background: rgba(0, 104, 56, 0.95);
+    background: rgba(13, 13, 13, 0.95); /* Menü ile uyumlu koyu bar */
     padding: 12px 25px;
     border-radius: 50px;
     border: 2px solid #96CF24;
@@ -216,9 +215,10 @@ body {
         width: 100%;
         height: auto;
         position: relative;
-        padding: 20px !important; 
+        padding: 0 !important; 
         border-right: none;
         border-bottom: 3px solid #96CF24;
+        background: #0d0d0d;
     }
     .main-wrapper { margin-left: 0; width: 100%; }
 }
