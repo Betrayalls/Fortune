@@ -16,7 +16,7 @@ body {
     font-family: 'Poppins', sans-serif;
     display: flex;
     flex-direction: row;
-    background: #080808; /* Biraz daha derinleştirildi */
+    background: #12181b; /* Görseldeki antrasit tonu ile değiştirildi */
     min-height: 100vh;
     overflow-x: hidden;
     color: #F5F5F5; /* Metin rengi canlandırıldı */
@@ -26,7 +26,7 @@ body {
 .side-nav {
     width: 280px;
     height: 100vh;
-    background: #050505; 
+    background: #0d1214; /* Gönderdiğin renge uyumlu daha koyu ton */
     position: fixed;
     left: 0;
     top: 0;
@@ -89,7 +89,7 @@ body {
     margin-left: 280px;
     width: calc(100% - 280px);
     transition: all 0.3s ease;
-    background: #0D0D0D; 
+    background: #12181b; /* Siyah yerine yeni koyu ton */
     min-height: 100vh;
 }
 
@@ -105,8 +105,8 @@ body {
 }
 
 .hero-area {
-    /* Karanlık katman azaltıldı, arka plan görseli canlandırıldı */
-    background: linear-gradient(rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.35)), url('img/arkahero.jpg');
+    /* Karanlık katman yeni renge uyumlu hale getirildi */
+    background: linear-gradient(rgba(18, 24, 27, 0.75), rgba(18, 24, 27, 0.45)), url('img/arkahero.jpg');
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
@@ -126,7 +126,7 @@ body {
     max-width: 700px;
     margin: 20px auto 30px;
     padding: 20px;
-    background: rgba(10, 10, 10, 0.8); 
+    background: rgba(22, 30, 34, 0.85); /* Yeni tona uyumlu şeffaf kutu */
     border: 1px solid #D4AF37;
     backdrop-filter: blur(8px); /* Daha net bir blur */
 }
@@ -161,9 +161,9 @@ body {
 
 .card, .testimonial-card { 
     padding: 30px !important; 
-    background: #121212 !important; 
+    background: #1a2226 !important; /* Kartlar zemin renginden biraz daha açık yapıldı */
     border-radius: 15px !important; 
-    border: 1px solid #282828 !important;
+    border: 1px solid #2d383e !important;
     border-bottom: 6px solid #D4AF37 !important; 
     transition: all 0.4s ease !important;
     display: flex;
@@ -196,7 +196,7 @@ body {
     transform: translateX(-50%);
     display: flex;
     gap: 15px;
-    background: rgba(5, 5, 5, 0.95); 
+    background: rgba(13, 18, 20, 0.95); /* Yeni tona uyumlu bar */
     padding: 12px 25px;
     border-radius: 50px;
     border: 2px solid #D4AF37;
@@ -217,7 +217,7 @@ body {
         padding: 0 !important; 
         border-right: none;
         border-bottom: 3px solid #D4AF37;
-        background: #050505;
+        background: #0d1214;
     }
     .main-wrapper { margin-left: 0; width: 100%; }
 }
