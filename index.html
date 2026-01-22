@@ -1,177 +1,135 @@
 <!DOCTYPE html>
 <html lang="tr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fortune Agency</title>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
-    <link rel="icon" type="image/png" href="img/logof.png">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fortune Agency</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" type="image/png" href="img/logof.png">
+  <style>
+    html { scroll-behavior: smooth; } /* JS yerine CSS ile smooth scroll */
+    body { margin:0; font-family:'Poppins', sans-serif; }
+    .side-nav { position:fixed; top:0; left:0; width:220px; height:100%; background:#111; color:#fff; }
+    .nav-logo { width:120px; margin:20px auto; display:block; }
+    .nav-menu { display:flex; flex-direction:column; padding:0 20px; }
+    .nav-link { color:#fff; text-decoration:none; padding:10px 0; transition:.3s; }
+    .nav-link:hover, .nav-link.active { color:gold; }
+    .main-wrapper { margin-left:220px; }
+    .section { padding:80px 40px; }
+    .hero-area { background:#000; color:#fff; text-align:center; }
+    .gold-text { color:gold; }
+    .gold-divider { width:60px; height:4px; background:gold; margin:20px auto; }
+    .grid { display:flex; gap:20px; justify-content:center; }
+    .card { background:#f9f9f9; padding:20px; border-radius:8px; flex:1; transition:.3s; }
+    .card:hover { transform:translateY(-5px); box-shadow:0 4px 12px rgba(0,0,0,.2); }
+    .dark-bg { background:#222; color:#fff; }
+    .testimonial-grid { display:flex; gap:20px; flex-wrap:wrap; }
+    .testimonial-card { background:#333; padding:20px; border-radius:8px; flex:1; color:#fff; }
+    .stars { color:gold; margin-bottom:10px; }
+    .fixed-contact-bar { position:fixed; bottom:0; left:0; right:0; background:#111; display:flex; justify-content:center; }
+    .bar-item { color:#fff; text-decoration:none; padding:10px 20px; display:flex; align-items:center; transition:.3s; }
+    .bar-item:hover { background:#333; }
+    .bar-icon { margin-right:8px; }
+  </style>
 </head>
 <body>
 
 <aside class="side-nav">
-    <div class="brand-box">
-        <img src="img/logorr.png" alt="Logo" class="nav-logo">
-    </div>
-
-    <nav class="nav-menu">
-        <a href="#hero" class="nav-link active">ANA SAYFA</a>
-        <a href="#hizmetler" class="nav-link">HİZMETLER</a>
-        <a href="#portfolyo" class="nav-link">PORTFOLYO</a>
-        <a href="#referanslar" class="nav-link">REFERANSLAR</a>
-    </nav>
+  <div class="brand-box">
+    <img src="img/logorr.png" alt="Fortune Agency Logo" class="nav-logo">
+  </div>
+  <nav class="nav-menu">
+    <a href="#hero" class="nav-link active">ANA SAYFA</a>
+    <a href="#hizmetler" class="nav-link">HİZMETLER</a>
+    <a href="#portfolyo" class="nav-link">PORTFOLYO</a>
+    <a href="#referanslar" class="nav-link">REFERANSLAR</a>
+  </nav>
 </aside>
-    
-    <main class="main-wrapper">
-        <section id="hero" class="section hero-area">
-            <section id="anasayfa" class="section hero-area">
+
+<main class="main-wrapper">
+  <!-- Hero -->
+  <section id="hero" class="section hero-area">
     <div class="container">
-        <h1>Markanız İçin <span class="gold-text">Altın Çağ</span></h1>
-        
-        <div class="hero-about-text">
-            <p>Fortune Agency olarak, dijital dünyada estetik ve lüksü bir araya getiriyoruz. 
-            Vizyonumuz, markanızı zirveye taşıyacak kreatif çözümler üretmektir.Sıradanlığı bırakın, zirveye bizimle adım atın.</p>
-        </div>
-
-        <p class="hero-sub">Fortune Agency Bir Web Tasarım Firmasıdır.</p>
+      <h1>Markanız İçin <span class="gold-text">Altın Çağ</span></h1>
+      <p>Fortune Agency olarak, dijital dünyada estetik ve lüksü bir araya getiriyoruz. 
+      Vizyonumuz, markanızı zirveye taşıyacak kreatif çözümler üretmektir. Sıradanlığı bırakın, zirveye bizimle adım atın.</p>
+      <p class="hero-sub">Fortune Agency Bir Web Tasarım Firmasıdır.</p>
     </div>
-</section>
-        </section>
+  </section>
 
-                <section id="hizmetler" class="section">
-            <h2 class="section-title">Hizmetlerimiz</h2>
-            <div class="gold-divider"></div>
-            <div class="grid">
-                <div class="card"><h3>Strateji</h3><p>Geleceği planlayan analizler.</p></div>
-                <div class="card"><h3>Tasarım</h3><p>Yapay Zeka İle Profesyonel Ekibimiz Bir Arada Çalışarak Sizlere En Güzel İmajı Sağlıyoruz</p></div>
-                <div class="card"><h3>Web Sitesi</h3><p>Dijital Dünya ile İşinizi Birleştiriyoruz.Web Tasarım İle İmajınızı ve Firma Tanınırlığınızı Ön Planda Tutuyoruz.</p></div>
-            </div>
-        </section>
-        
-        <section id="portfolyo" class="section dark-bg">
-            <h2 class="section-title">Portfolyo</h2>
-            <div class="gold-divider"></div>
-        </section> 
-
-</section>
-        <section id="referanslar" class="section dark-bg">
-    <div class="container">
-        <h2 class="section-title">Müşteri Yorumları</h2>
-        <div class="gold-divider"></div>
-        
-        <div class="testimonial-grid">
-            <div class="testimonial-card">
-                <div class="stars">★★★★★</div>
-                <p>"Yaptıkları site gerçekten çok işime yaradı.Artık tüm oyuncularımın mesai giriş çıkış ve mesai saatlerini kontrol edebiliyorum.Fortune Agency'e teşekkürlerimi iletiyorum"</p>
-                <div class="client-info">
-                    <strong>SAPD Panel</strong>
-                    <span>Fivem SAPD Şefi</span>
-                </div>
-            </div>
-
-            <div class="testimonial-card">
-                <div class="stars">★★★★★</div>
-                <p>"Web sitemizdeki o akıcı geçişler ve tasarım kalitesi müşterilerimizden tam not aldı. Dijitaldeki vizyonumuz artık çok daha güçlü."</p>
-                <div class="client-info">
-                    <strong>Selin Aras</strong>
-                    <span>Kurucu, Moda Evi</span>
-                </div>
-            </div>
-
-            <div class="testimonial-card">
-                <div class="stars">★★★★★</div>
-                <p>"Beklentilerimizin çok üzerinde bir iş çıktı. Hem teknik hem de tasarım anlamında gerçekten altın dokunuş yapıyorlar."</p>
-                <div class="client-info">
-                    <strong>Murat Demir</strong>
-                    <span>Pazarlama Direktörü</span>
-                </div>
-            </div>
-        </div>
+  <!-- Hizmetler -->
+  <section id="hizmetler" class="section">
+    <h2 class="section-title">Hizmetlerimiz</h2>
+    <div class="gold-divider"></div>
+    <div class="grid">
+      <div class="card"><h3>Strateji</h3><p>Geleceği planlayan analizler.</p></div>
+      <div class="card"><h3>Tasarım</h3><p>Yapay Zeka ile profesyonel ekibimiz bir arada çalışarak sizlere en güzel imajı sağlıyoruz.</p></div>
+      <div class="card"><h3>Web Sitesi</h3><p>Dijital dünya ile işinizi birleştiriyoruz. Web tasarım ile imajınızı ve firma tanınırlığınızı ön planda tutuyoruz.</p></div>
     </div>
-</section>
-        
+  </section>
+
+  <!-- Portfolyo -->
+  <section id="portfolyo" class="section dark-bg">
+    <h2 class="section-title">Portfolyo</h2>
+    <div class="gold-divider"></div>
+    <div class="portfolio-grid">
+      <div class="card">Proje 1</div>
+      <div class="card">Proje 2</div>
+      <div class="card">Proje 3</div>
+    </div>
+  </section>
+
+  <!-- Referanslar -->
+  <section id="referanslar" class="section dark-bg">
+    <h2 class="section-title">Müşteri Yorumları</h2>
+    <div class="gold-divider"></div>
+    <div class="testimonial-grid">
+      <div class="testimonial-card">
+        <div class="stars">★★★★★</div>
+        <p>"Yaptıkları site gerçekten çok işime yaradı. Artık tüm oyuncularımın mesai giriş çıkışlarını kontrol edebiliyorum."</p>
+        <div class="client-info"><strong>SAPD Panel</strong><span>Fivem SAPD Şefi</span></div>
+      </div>
+      <div class="testimonial-card">
+        <div class="stars">★★★★★</div>
+        <p>"Web sitemizdeki akıcı geçişler ve tasarım kalitesi müşterilerimizden tam not aldı."</p>
+        <div class="client-info"><strong>Selin Aras</strong><span>Kurucu, Moda Evi</span></div>
+      </div>
+      <div class="testimonial-card">
+        <div class="stars">★★★★★</div>
+        <p>"Beklentilerimizin çok üzerinde bir iş çıktı. Hem teknik hem de tasarım anlamında altın dokunuş yapıyorlar."</p>
+        <div class="client-info"><strong>Murat Demir</strong><span>Pazarlama Direktörü</span></div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<!-- Contact Bar -->
 <div class="fixed-contact-bar">
-    <a href="https://mail.google.com/mail/?view=cm&fs=1&to=fortunedizayn@gmail.com" target="_blank" class="bar-item">
-        <span class="bar-icon">✉</span>
-        <span class="bar-text">E-Mail</span>
-    </a>
-    <a href="https://instagram.com/fortune.web.dizayn" target="_blank" class="bar-item">
-        <span class="bar-icon">📸</span>
-        <span class="bar-text">Instagram</span>
-    </a>
-    <a href="https://discord.gg/huQz9vAuaQ" target="_blank" class="bar-item">
-        <span class="bar-icon">💬</span>
-        <span class="bar-text">Discord</span>
-    </a>
+  <a href="mailto:fortunedizayn@gmail.com" class="bar-item"><span class="bar-icon">✉</span><span class="bar-text">E-Mail</span></a>
+  <a href="https://instagram.com/fortune.web.dizayn" target="_blank" class="bar-item"><span class="bar-icon">📸</span><span class="bar-text">Instagram</span></a>
+  <a href="https://discord.gg/huQz9vAuaQ" target="_blank" class="bar-item"><span class="bar-icon">💬</span><span class="bar-text">Discord</span></a>
 </div>
-    </div>
-    </main>
 
-    <script>
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const targetId = this.getAttribute('href');
-                const targetElement = document.querySelector(targetId);
-                
-                if (targetElement) {
-                    const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset;
-                    const startPosition = window.pageYOffset;
-                    const distance = targetPosition - startPosition;
-                    const duration = 1200; // 1.2 saniye sürer (Hızı buradan ayarla)
-                    let start = null;
-
-                    function step(timestamp) {
-                        if (!start) start = timestamp;
-                        const progress = timestamp - start;
-                        // Cubic easing fonksiyonu (Yavaş başlar, hızlanır, yavaş durur)
-                        const ease = progress / duration < 0.5 
-                            ? 4 * Math.pow(progress / duration, 3) 
-                            : 1 - Math.pow(-2 * (progress / duration) + 2, 3) / 2;
-                        
-                        window.scrollTo(0, startPosition + distance * ease);
-                        if (progress < duration) window.requestAnimationFrame(step);
-                    }
-                    window.requestAnimationFrame(step);
-                }
-            });
-        });
-    </script>
-        <script>
-    const sections = document.querySelectorAll(".section");
-    const navLinks = document.querySelectorAll(".nav-link");
-
-    window.addEventListener("scroll", () => {
-        let current = "";
-
-        sections.forEach((section) => {
-            const sectionTop = section.offsetTop;
-            const sectionHeight = section.clientHeight;
-            // Sayfanın ortasına geldiğinde aktif sayar
-            if (pageYOffset >= sectionTop - sectionHeight / 3) {
-                current = section.getAttribute("id");
-            }
-        });
-
-        navLinks.forEach((link) => {
-            link.classList.remove("active");
-            if (link.getAttribute("href").includes(current)) {
-                link.classList.add("active");
-            }
-        });
+<script>
+  const sections = document.querySelectorAll(".section");
+  const navLinks = document.querySelectorAll(".nav-link");
+  window.addEventListener("scroll", () => {
+    let current = "";
+    sections.forEach((section) => {
+      const sectionTop = section.offsetTop;
+      const sectionHeight = section.clientHeight;
+      if (pageYOffset >= sectionTop - sectionHeight / 3) {
+        current = section.getAttribute("id");
+      }
     });
+    navLinks.forEach((link) => {
+      link.classList.remove("active");
+      if (link.getAttribute("href").includes(current)) {
+        link.classList.add("active");
+      }
+    });
+  });
 </script>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
